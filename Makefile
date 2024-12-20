@@ -6,16 +6,10 @@ LIBFT_DIR = ./libft
 LIBFT = libft.a
 INC_DIR = ./include
 SRC_DIR = ./src
-HEADER = cub3d.h \
-		execute.h
-SRCS =	execute_error.c \
-		execute_hook.c	\
-		execute_main.c	\
-		execute_move.c
-
-SRCS := $(addprefix $(SRC_DIR)/, $(SRCS))
-HEADER := $(addprefix $(INC_DIR)/, $(HEADER))
-LIBFT := $(addprefix $(LIBFT_DIR)/, $(LIBFT))
+MLX_DIR = ./mlx
+MLX = libmlx.a
+HEADER = $(INC_DIR)/cub3d.h
+SRCS =	src/cub3d.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
