@@ -11,10 +11,18 @@
 # include <math.h>
 # include "libft.h"
 
+# include "../libft/libft.h"
+# include "mlx.h"
+
+# define NO 0
+# define SO	1
+# define WE 2
+# define EA 3
+
 typedef struct s_texture
 {
 	char	*path;
-	int		*texture;
+	int		**texture;
 	int		width;
 	int		height;
 }	t_texture;
@@ -36,7 +44,6 @@ typedef struct s_info
 	t_color		celling_color;
 	t_texture	textures[4];
 }	t_info;
-
 
 typedef struct s_person
 {
@@ -83,5 +90,6 @@ typedef struct s_mlx
 	// t_complex	jcomplex;
 }	t_mlx;
 
+void	cub3d_parse(t_info *info, char *path);
 
 #endif
