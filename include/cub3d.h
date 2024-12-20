@@ -29,7 +29,7 @@ typedef struct s_color
 typedef struct s_info
 {
 	char		*cub_path;
-	int			**map;
+	char		**map;
 	int			map_width;
 	int			map_height;
 	t_color		floor_color;
@@ -40,12 +40,12 @@ typedef struct s_info
 
 typedef struct s_person
 {
-	int x_pos;
-	int y_pos;
-	int direction; // 0~360 각도로 저장해야할수도
-	int speed;
+	double	x_pos; // SAFE_DISTANCE ~ (map_width - SAFE_DISTANCE)
+	double	y_pos; // SAFE_DISTANCE ~ (map_height - SAFE_DISTANCE)
+	double	x_dir; // normal vector
+	double	y_dir; // normal vectors
 } t_person;
-// 시작 x_pos, y_pos, 방향을 알려줘야함. + speed
+// 시작 x_pos, y_pos, 방향을 알려줘야함. + speeds
 
 typedef struct s_data
 {

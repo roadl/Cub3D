@@ -6,7 +6,7 @@
 /*   By: yuyu <yuyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 14:02:43 by yuyu              #+#    #+#             */
-/*   Updated: 2024/12/20 17:17:49 by yuyu             ###   ########.fr       */
+/*   Updated: 2024/12/20 20:39:44 by yuyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,9 @@
 
 # include "cub3d.h"
 
-# define PI 3.14159265359
-
 // win size
-# define WIN_X 1920
-# define WIN_Y 1080
+# define WIN_X 800
+# define WIN_Y 600
 
 // x11 event
 # define X_EVNET_KEY_PRESS 2
@@ -34,6 +32,14 @@
 # define KEY_EXIT 53 // exit key
 # define KEY_LEFT 123
 # define KEY_RIGHT 124
+
+// map 충돌 방지
+# define SAFE_DISTANCE 0.05
+
+# define MOVE_SPEED 0.05 // 일단 0.01 ~ 0.1 생각해야할듯
+# define TURN_SPEED 1
+
+# define PI 3.14159265359
 
 typedef enum e_key_flag
 {
@@ -52,5 +58,12 @@ void	error_occur(t_mlx *mlx, char *custom_msg, int e_code);
 //==================== execute_hook.c ====================
 int		key_press(int keycode, t_mlx *mlx);
 int		key_release(int keycode, t_mlx *mlx);
+
+//==================== execute_move.c ====================
+void	ft_move_w(t_mlx *mlx);
+void	ft_move_a(t_mlx *mlx);
+void	ft_move_s(t_mlx *mlx);
+void	ft_move_d(t_mlx *mlx);
+void	ft_turn(t_mlx *mlx, char ch);
 
 #endif
