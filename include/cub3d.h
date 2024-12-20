@@ -8,10 +8,18 @@
 # include <string.h>
 # include <math.h>
 
+# include "libft.h"
+# include "mlx.h"
+
+# define NO 0
+# define SO	1
+# define WE 2
+# define EA 3
+
 typedef struct s_texture
 {
 	char	*path;
-	int		*texture;
+	int		**texture;
 	int		width;
 	int		height;
 }	t_texture;
