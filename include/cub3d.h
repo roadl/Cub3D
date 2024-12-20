@@ -8,7 +8,7 @@
 # include <string.h>
 # include <math.h>
 
-# include "libft.h"
+# include "../libft/libft.h"
 # include "mlx.h"
 
 # define NO 0
@@ -41,5 +41,12 @@ typedef struct s_info
 	t_color		celling_color;
 	t_texture	textures[4];		
 }	t_info;
+
+// parse.c
+void	cub3d_parse(t_info *info, char *path);
+void	check_file(char *path);
+
+// util.c
+void	error_exit(char *error_msg);
 
 #endif

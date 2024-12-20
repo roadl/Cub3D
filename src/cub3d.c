@@ -2,12 +2,10 @@
 
 int	main(int argc, char **argv)
 {
+	t_info	info;
+
 	if (argc != 2)
-	{
-		ft_putstr_fd("Error\n", STDERR_FILENO);
-		ft_putstr_fd("ARGC Must BE 2", STDERR_FILENO);
-		return (-1);
-	}
-	
+		error_exit("argc must be 2\n");
+	cub3d_parse(&info, argv[1]);
 	return (0);
 }
