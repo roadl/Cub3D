@@ -31,7 +31,7 @@ typedef struct s_info
 	int			map_height;
 	t_color		floor_color;
 	t_color		celling_color;
-	t_texture	textures[4];		
+	t_texture	textures[4];
 }	t_info;
 
 #endif
