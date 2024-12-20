@@ -6,7 +6,7 @@
 /*   By: yuyu <yuyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 14:07:45 by yuyu              #+#    #+#             */
-/*   Updated: 2024/12/20 22:42:45 by yuyu             ###   ########.fr       */
+/*   Updated: 2024/12/20 22:50:58 by yuyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	person_move(t_mlx *mlx)
 	// test_print(mlx);
 }
 
-void	ray_setting(t_mlx *mlx, int x)
+void	ray_setting(t_mlx *mlx, int x) // 미완
 {
 	double	temp;
 	double	angle;
