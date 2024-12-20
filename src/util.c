@@ -1,29 +1,41 @@
-#include "cub3d.h"
+#include "parse.h"
 
-// 파일 열리는지 확인, .cub으로 끝나는지 확인
-void	check_file(char *path)
+int	is_empty(char *line)
 {
-	char	len;
-	int		fd;
+	int	i;
 
-	fd = open(path, O_RDONLY);
-	if (fd == -1)
-	{
-		perror("cub3d");
-		exit(EXIT_FAILURE);
-	}
-	close(fd);
-	fd = open(path, O_RDONLY | O_DIRECTORY);
-	if (fd != -1)
-		error_exit("Cannot using Directory\n");
-	len = ft_strlen(path);
-	if (ft_strncmp(path + len - 4, ".cub", 4) != 0)
-		error_exit("The file must be a .cub extension\n");
+	i = 0;
+	while (line[i])
+		if (!ft_isspace(line[i++]))
+			return (0);
+	return (1);
 }
 
-void	error_exit(char *error_msg)
+char	*free_and_gnl(char *line, int fd)
+{
+	free(line);
+	return (get_next_line(fd));
+}
+
+void	fail_exit()
+{
+	perror("cub3d");
+	exit(EXIT_FAILURE);
+}
+
+void	error_exit(const char *error_msg)
 {
 	ft_putstr_fd("Error\n", STDERR_FILENO);
 	ft_putstr_fd(error_msg, STDERR_FILENO);
 	exit(EXIT_FAILURE);
+}
+
+int	open_with_check(char *path, int opt)
+{
+	int	fd;
+
+	fd = open(path, opt);
+	if (!fd)
+		fail_exit();
+	return (fd);
 }

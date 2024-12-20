@@ -34,7 +34,7 @@ typedef struct s_color
 typedef struct s_info
 {
 	char		*cub_path;
-	int			**map;
+	char		**map;
 	int			map_width;
 	int			map_height;
 	t_color		floor_color;
@@ -42,11 +42,6 @@ typedef struct s_info
 	t_texture	textures[4];		
 }	t_info;
 
-// parse.c
 void	cub3d_parse(t_info *info, char *path);
-void	check_file(char *path);
-
-// util.c
-void	error_exit(char *error_msg);
 
 #endif

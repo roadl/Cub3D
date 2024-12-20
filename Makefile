@@ -8,8 +8,8 @@ INC_DIR = ./include
 SRC_DIR = ./src
 MLX_DIR = ./mlx
 MLX = libmlx.a
-HEADER = $(INC_DIR)/cub3d.h
-SRCS =	src/cub3d.c src/parse.c src/util.c
+HEADER = $(INC_DIR)/cub3d.h $(INC_DIR)/parse.h
+SRCS =	src/cub3d.c src/parse.c src/util.c src/check.c src/map.c src/debug.c
 OBJS = $(SRCS:.c=.o)
 NAME = cub3D
 
