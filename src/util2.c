@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   util2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yojin <yojin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/20 21:09:47 by yojin             #+#    #+#             */
-/*   Updated: 2024/12/20 21:14:34 by yojin            ###   ########.fr       */
+/*   Created: 2024/12/20 21:05:07 by yojin             #+#    #+#             */
+/*   Updated: 2024/12/20 21:05:56 by yojin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
 #include "parse.h"
 
-int	main(int argc, char **argv)
+void	init_info(t_info *info)
 {
-	t_info	info;
+	int	i;
 
-	atexit(leaks);
-	if (argc != 2)
-	{
-		ft_putstr_fd("Error\n", STDERR_FILENO);
-		ft_putstr_fd("Arguemnt count must be 2\n", STDERR_FILENO);
-		exit(EXIT_FAILURE);
-	}
-	cub3d_parse(&info, argv[1]);
-	exit(EXIT_SUCCESS);
-	return (0);
+	i = 0;
+	info->floor_color.r = -1;
+	info->celling_color.r = -1;
+	while (i < 4)
+		info->textures[i++].path = NULL;
+	info->map_width = 0;
+	info->map_height = 0;
+	info->person.x_dir = 0;
+	info->person.y_dir = 0;
+	info->person.x_pos = -1;
+	info->person.y_pos = -1;
 }

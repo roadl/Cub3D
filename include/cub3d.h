@@ -9,7 +9,6 @@
 # include <errno.h> // 이거 errno써도 되려나.. MiniLibX에서 잘 처리 안한다고 함.
 # include <mlx.h>
 # include <math.h>
-# include "libft.h"
 
 # include "../libft/libft.h"
 # include "mlx.h"
@@ -34,17 +33,6 @@ typedef struct s_color
 	int	b;
 }	t_color;
 
-typedef struct s_info
-{
-	char		*cub_path;
-	char		**map;
-	int			map_width;
-	int			map_height;
-	t_color		floor_color;
-	t_color		celling_color;
-	t_texture	textures[4];
-}	t_info;
-
 typedef struct s_person
 {
 	double	x_pos; // SAFE_DISTANCE ~ (map_width - SAFE_DISTANCE)
@@ -53,6 +41,18 @@ typedef struct s_person
 	double	y_dir; // normal vectors
 } t_person;
 // 시작 x_pos, y_pos, 방향을 알려줘야함. + speeds
+
+typedef struct s_info
+{
+	char		*cub_path;
+	char		**map;
+	int			map_width;
+	int			map_height;
+	t_color		floor_color;
+	t_color		celling_color;
+	t_person	person;
+	t_texture	textures[4];
+}	t_info;
 
 typedef struct s_data
 {

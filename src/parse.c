@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yojin <yojin@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/20 21:04:33 by yojin             #+#    #+#             */
+/*   Updated: 2024/12/20 21:04:52 by yojin            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "parse.h"
 #include "../gnl/get_next_line.h"
 
@@ -88,23 +100,10 @@ static void	parse_file(t_info *info, char *path)
 	close(fd);
 }
 
-void	init_info(t_info *info)
-{
-	int	i;
-
-	i = 0;
-	info->floor_color.r = -1;
-	info->celling_color.r = -1;
-	while (i < 4)
-		info->textures[i++].path = NULL;
-	info->map_width = 0;
-	info->map_height = 0;
-}
-
 void	cub3d_parse(t_info *info, char *path)
 {
 	init_info(info);
-	check_path_valid(path);
+	check_file(path);
 	parse_file(info, path);
 	print_info(info);
 	check_info_valid(info);
