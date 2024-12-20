@@ -6,13 +6,13 @@
 /*   By: yuyu <yuyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:16:41 by yuyu              #+#    #+#             */
-/*   Updated: 2024/12/20 17:20:46 by yuyu             ###   ########.fr       */
+/*   Updated: 2024/12/20 21:07:02 by yuyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execute.h"
 
-void	program_end(t_mlx *mlx) // 정상종료
+int	program_end(t_mlx *mlx) // 정상종료
 {
 	if (mlx->img.img_ptr)
 		mlx_destroy_image(mlx->mlx_ptr, mlx->img.img_ptr);
