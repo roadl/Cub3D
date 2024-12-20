@@ -1,6 +1,6 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -I$(INC_DIR)
-MLXFLAGS = -Lmlx -lmlx -framework OpenGL -framework AppKit
+MLXFLAGS = -Lmlx -lmlx -framework OpenGL -framework AppKit -lm
 LIBFT_DIR = ./libft
 LIBFT = libft.a
 INC_DIR = ./include
