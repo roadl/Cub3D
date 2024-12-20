@@ -6,15 +6,10 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
-# include <errno.h> // 이거 errno써도 되려나..
+# include <errno.h> // 이거 errno써도 되려나.. MiniLibX에서 잘 처리 안한다고 함.
 # include <mlx.h>
 # include <math.h>
 # include "libft.h"
-
-
-# define WIN_X 1920
-# define WIN_Y 1080
-# define KEY_EXIT 53 // exit key
 
 typedef struct s_texture
 {
@@ -43,13 +38,14 @@ typedef struct s_info
 }	t_info;
 
 
-
-typedef struct s_position
+typedef struct s_person
 {
-	double	x; //
-	double	y; // 이것도 마우스라 필요없을 수 도?
-	double	scope; // 필요 없을 수도
-}	t_position;
+	int x_pos;
+	int y_pos;
+	int direction; // 0~360 각도로 저장해야할수도
+	int speed;
+} t_person;
+// 시작 x_pos, y_pos, 방향을 알려줘야함. + speed
 
 typedef struct s_data
 {
@@ -59,6 +55,13 @@ typedef struct s_data
 	int		line_length;
 	int		endian;
 }	t_data;
+
+// typedef struct s_position
+// {
+// 	double	x; //
+// 	double	y; // 이것도 마우스라 필요없을 수 도?
+// 	double	scope; // 필요 없을 수도
+// }	t_position;
 
 // typedef struct s_complex
 // {
@@ -70,10 +73,12 @@ typedef struct s_mlx
 {
 	void		*mlx_ptr;
 	void		*win_ptr;
-	int			option;
-	int			col_op;
-	t_position	pos;
+	// int			option;
+	// int			col_op;
 	t_data		img;
+	// t_position	pos;
+	t_person	person;
+	int	key_state; // t_key_flag에서 shift 연산
 	t_info		info; // 혹은 t_info *info;
 	// t_complex	jcomplex;
 }	t_mlx;

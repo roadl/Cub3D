@@ -6,7 +6,7 @@
 /*   By: yuyu <yuyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:16:41 by yuyu              #+#    #+#             */
-/*   Updated: 2024/12/20 15:18:52 by yuyu             ###   ########.fr       */
+/*   Updated: 2024/12/20 17:20:46 by yuyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	program_end(t_mlx *mlx) // 정상종료
 {
 	if (mlx->img.img_ptr)
-		mlx_destroy_image(mlx->mlx_ptr, mlx->win_ptr); // 이거 여러개일려나
+		mlx_destroy_image(mlx->mlx_ptr, mlx->img.img_ptr);
 	if (mlx->win_ptr)
 		mlx_destroy_window(mlx->mlx_ptr, mlx->win_ptr);
 	exit(0);
@@ -30,7 +30,7 @@ void	error_occur(t_mlx *mlx, char *custom_msg, int e_code) // 문제 발생
 	else
 		ft_putendl_fd(error_msg, 2);
 	if (mlx->img.img_ptr)
-		mlx_destroy_image(mlx->mlx_ptr, mlx->win_ptr);
+		mlx_destroy_image(mlx->mlx_ptr, mlx->img.img_ptr);
 	if (mlx->win_ptr)
 		mlx_destroy_window(mlx->mlx_ptr, mlx->win_ptr);
 	if (e_code)
