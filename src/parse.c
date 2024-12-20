@@ -6,7 +6,7 @@
 /*   By: yojin <yojin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 21:04:33 by yojin             #+#    #+#             */
-/*   Updated: 2024/12/20 21:04:52 by yojin            ###   ########.fr       */
+/*   Updated: 2024/12/20 22:36:54 by yojin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ static void	get_path_info(char *line, char **target)
 	*target = str;
 }
 
-static t_color	get_color_info(char *line, t_color *target_color)
+static void	get_color_info(char *line, int *target_color)
 {
 	char	**strs;
 	int		i;
-	t_color	color;
+	int		color;
 
-	if (target_color->r != -1)
+	if (*target_color != -1)
 		error_exit("Duplicate Color Info!!\n");
 	while (*line == ' ' || *line == '\t')
 		line++;
@@ -44,9 +44,11 @@ static t_color	get_color_info(char *line, t_color *target_color)
 	if (!strs[0] || !strs[1] || !strs[2] || strs[3])
 		error_exit("Color Format Error!!\n");
 	check_color_valid(strs);
-	color.r = ft_atoi(strs[0]);
-	color.g = ft_atoi(strs[1]);
-	color.b = ft_atoi(strs[2]);
+	color = ft_atoi(strs[0]);
+	color = color << 8;
+	color += ft_atoi(strs[1]);
+	color = color << 8;
+	color += ft_atoi(strs[2]);
 	i = 0;
 	while (i < 4)
 		free(strs[i++]);

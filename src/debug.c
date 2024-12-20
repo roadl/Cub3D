@@ -6,7 +6,7 @@
 /*   By: yojin <yojin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 21:03:56 by yojin             #+#    #+#             */
-/*   Updated: 2024/12/20 21:12:25 by yojin            ###   ########.fr       */
+/*   Updated: 2024/12/20 22:25:07 by yojin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,12 @@ void	print_player(t_person p)
 
 void	print_info(t_info *info)
 {
-	t_color	floor;
-	t_color	celling;
-
-	floor = info->floor_color;
-	celling = info->celling_color;
 	printf("NO: %s\n", info->textures[NO].path);
 	printf("SO: %s\n", info->textures[SO].path);
 	printf("WE: %s\n", info->textures[WE].path);
 	printf("EA: %s\n", info->textures[EA].path);
-	printf("floor: %d, %d, %d\n", floor.r, floor.g, floor.b);
-	printf("celling: %d, %d, %d\n", celling.r, celling.g, celling.b);
+	printf("floor: %#X\n", info->floor_color);
+	printf("celling: %#X\n", info->celling_color);
 }
 
 void	leaks(void)

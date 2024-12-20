@@ -6,7 +6,7 @@
 /*   By: yojin <yojin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 21:03:50 by yojin             #+#    #+#             */
-/*   Updated: 2024/12/20 21:03:51 by yojin            ###   ########.fr       */
+/*   Updated: 2024/12/20 22:24:19 by yojin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,6 @@ void	check_info_valid(t_info *info)
 	while (i < 4)
 		if (!info->textures[i++].path)
 			error_exit("Texture Info Missing!!\n");
-	if (info->celling_color.r == -1 || info->floor_color.r == -1)
+	if (info->celling_color == -1 || info->floor_color == -1)
 		error_exit("Color Info Missing!!\n");
 }

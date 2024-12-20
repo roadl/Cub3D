@@ -26,13 +26,6 @@ typedef struct s_texture
 	int		height;
 }	t_texture;
 
-typedef struct s_color
-{
-	int	r;
-	int	g;
-	int	b;
-}	t_color;
-
 typedef struct s_person
 {
 	double	x_pos; // SAFE_DISTANCE ~ (map_width - SAFE_DISTANCE)
@@ -48,8 +41,8 @@ typedef struct s_info
 	char		**map;
 	int			map_width;
 	int			map_height;
-	t_color		floor_color;
-	t_color		celling_color;
+	int			floor_color;
+	int			celling_color;
 	t_person	person;
 	t_texture	textures[4];
 }	t_info;

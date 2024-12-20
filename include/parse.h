@@ -34,6 +34,9 @@ int		is_line_map(char *line);
 int		cal_width(char *line);
 void	copy_line(char *map_row, char *line, int width);
 
+//texture.c
+void	init_textures(t_mlx *mlx);
+
 //debug.c
 void	print_map(t_info *info);
 void	print_info(t_info *info);
