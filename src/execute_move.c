@@ -6,56 +6,96 @@
 /*   By: yuyu <yuyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 19:47:17 by yuyu              #+#    #+#             */
-/*   Updated: 2024/12/21 20:25:24 by yuyu             ###   ########.fr       */
+/*   Updated: 2024/12/21 22:01:27 by yuyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execute.h"
 
+void	rotate_vector(double *dx, double *dy, double angle)
+{
+	double	temp;
+
+	temp = *dx * cos(angle) - *dy * sin(angle);
+	*dy = *dx * sin(angle) + *dy * cos(angle);
+	*dx = temp;
+}
+
+int	check_vaild_pos(t_mlx *mlx, double dx, double dy)
+{
+	if (mlx->info.person.x_pos + dx * SAFE_DISTANCE > 0
+		&& mlx->info.person.x_pos + dx * SAFE_DISTANCE < mlx->info.map_width
+		&& mlx->info.person.y_pos + dy * SAFE_DISTANCE > 0
+		&& mlx->info.person.y_pos + dy * SAFE_DISTANCE < mlx->info.map_height)
+		return (1);
+	return (0);
+}
+
 void	ft_move_w(t_mlx *mlx)
 {
+	double	dx;
 	double	dy;
 
-	dy = -1 * MOVE_SPEED;
-	if (mlx->info.person.y_pos + dy - SAFE_DISTANCE > 0
-		&& mlx->info.map[(int)(mlx->info.person.y_pos + dy)]
-		[(int)mlx->info.person.x_pos] == '0')
+	dx = mlx->info.person.x_dir * MOVE_SPEED;
+	dy = mlx->info.person.y_dir * MOVE_SPEED;
+
+	if (check_vaild_pos(mlx, dx, dy))
+		return ;
+	if (mlx->info.map[(int)(mlx->info.person.y_pos)][(int)(mlx->info.person.x_pos + dx * SAFE_DISTANCE)])
+		mlx->info.person.x_pos += dx;
+	if (mlx->info.map[(int)(mlx->info.person.y_pos + dy * SAFE_DISTANCE)][(int)(mlx->info.person.x_pos)])
 		mlx->info.person.y_pos += dy;
-	// else
-		// printf("%lf no", mlx->info.person.y_pos + dy - SAFE_DISTANCE);
 }
 
 void	ft_move_a(t_mlx *mlx)
 {
 	double	dx;
+	double	dy;
 
-	dx = -1 * MOVE_SPEED;
-	if (mlx->info.person.x_pos + dx - SAFE_DISTANCE > 0
-		&& mlx->info.map[(int)mlx->info.person.y_pos]
-		[(int)(mlx->info.person.x_pos + dx)] == '0')
+	dx = mlx->info.person.x_dir * MOVE_SPEED;
+	dy = mlx->info.person.y_dir * MOVE_SPEED;
+
+	rotate_vector(&dx, &dy, 90);
+	if (check_vaild_pos(mlx, dx, dy))
+		return ;
+	if (mlx->info.map[(int)(mlx->info.person.y_pos)][(int)(mlx->info.person.x_pos + dx * SAFE_DISTANCE)])
 		mlx->info.person.x_pos += dx;
+	if (mlx->info.map[(int)(mlx->info.person.y_pos + dy * SAFE_DISTANCE)][(int)(mlx->info.person.x_pos)])
+		mlx->info.person.y_pos += dy;
 }
 
 void	ft_move_s(t_mlx *mlx)
 {
+	double	dx;
 	double	dy;
 
-	dy = MOVE_SPEED;
-	if (mlx->info.person.y_pos + dy + SAFE_DISTANCE < mlx->info.map_height
-		&& mlx->info.map[(int)(mlx->info.person.y_pos + dy)]
-		[(int)mlx->info.person.x_pos] == '0')
+	dx = mlx->info.person.x_dir * MOVE_SPEED;
+	dy = mlx->info.person.y_dir * MOVE_SPEED;
+
+	rotate_vector(&dx, &dy, 180);
+	if (check_vaild_pos(mlx, dx, dy))
+		return ;
+	if (mlx->info.map[(int)(mlx->info.person.y_pos)][(int)(mlx->info.person.x_pos + dx * SAFE_DISTANCE)])
+		mlx->info.person.x_pos += dx;
+	if (mlx->info.map[(int)(mlx->info.person.y_pos + dy * SAFE_DISTANCE)][(int)(mlx->info.person.x_pos)])
 		mlx->info.person.y_pos += dy;
 }
 
 void	ft_move_d(t_mlx *mlx)
 {
 	double	dx;
+	double	dy;
 
-	dx = MOVE_SPEED;
-	if (mlx->info.person.x_pos + dx + SAFE_DISTANCE < mlx->info.map_width
-		&& mlx->info.map[(int)mlx->info.person.y_pos]
-		[(int)(mlx->info.person.x_pos + dx)] == '0')
+	dx = mlx->info.person.x_dir * MOVE_SPEED;
+	dy = mlx->info.person.y_dir * MOVE_SPEED;
+
+	rotate_vector(&dx, &dy, 270);
+	if (check_vaild_pos(mlx, dx, dy))
+		return ;
+	if (mlx->info.map[(int)(mlx->info.person.y_pos)][(int)(mlx->info.person.x_pos + dx * SAFE_DISTANCE)])
 		mlx->info.person.x_pos += dx;
+	if (mlx->info.map[(int)(mlx->info.person.y_pos + dy * SAFE_DISTANCE)][(int)(mlx->info.person.x_pos)])
+		mlx->info.person.y_pos += dy;
 }
 
 void	ft_turn(t_mlx *mlx, char ch)

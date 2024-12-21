@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yojin <yojin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: yuyu <yuyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 14:02:43 by yuyu              #+#    #+#             */
-/*   Updated: 2024/12/21 20:52:32 by yojin            ###   ########.fr       */
+/*   Updated: 2024/12/21 21:55:21 by yuyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # define KEY_RIGHT 124
 
 // map 충돌 방지
-# define SAFE_DISTANCE 0.05
+# define SAFE_DISTANCE 1.05
 # define ALMOSTZERO 1.0e-9
 
 # define PI 3.14159265359
