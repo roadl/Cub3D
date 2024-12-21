@@ -6,7 +6,7 @@
 /*   By: yuyu <yuyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 19:47:17 by yuyu              #+#    #+#             */
-/*   Updated: 2024/12/21 22:19:01 by yuyu             ###   ########.fr       */
+/*   Updated: 2024/12/22 00:25:26 by yuyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	ft_move_w(t_mlx *mlx)
 		mlx->info.person.y_pos += dy;
 }
 
-void	ft_move_a(t_mlx *mlx)
+void	ft_move_d(t_mlx *mlx)
 {
 	double	dx;
 	double	dy;
@@ -81,7 +81,7 @@ void	ft_move_s(t_mlx *mlx)
 		mlx->info.person.y_pos += dy;
 }
 
-void	ft_move_d(t_mlx *mlx)
+void	ft_move_a(t_mlx *mlx)
 {
 	double	dx;
 	double	dy;
@@ -103,7 +103,7 @@ void	ft_turn(t_mlx *mlx, char ch)
 	double	temp;
 	double	angle;
 
-	if (ch == 'L') // 방향 체크해보기
+	if (ch == 'R') // 방향 체크해보기
 		angle = (double)TURN_SPEED;
 	else
 		angle = (double)(-1 * TURN_SPEED);
@@ -112,4 +112,9 @@ void	ft_turn(t_mlx *mlx, char ch)
 	mlx->info.person.y_dir = mlx->info.person.x_dir
 		* sin(angle) + mlx->info.person.y_dir * cos(angle);
 	mlx->info.person.x_dir = temp;
+	temp = mlx->info.person.x_camera * cos(angle)
+		- mlx->info.person.y_camera * sin(angle);
+	mlx->info.person.y_camera = mlx->info.person.x_camera
+		* sin(angle) + mlx->info.person.y_camera * cos(angle);
+	mlx->info.person.x_camera = temp;
 }

@@ -6,7 +6,7 @@
 /*   By: yuyu <yuyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 21:09:47 by yojin             #+#    #+#             */
-/*   Updated: 2024/12/21 22:15:47 by yuyu             ###   ########.fr       */
+/*   Updated: 2024/12/21 23:51:42 by yuyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,19 @@ void	mlx_start(t_mlx *mlx)
 	if (!mlx->img.addr)
 		error_occur(mlx, "mlx_get_data_addr error", 1);
 	init_textures(mlx);
+	mlx->info.person.x_camera = mlx->info.person.x_dir;
+	mlx->info.person.y_camera = mlx->info.person.y_dir;
+	rotate_vector(&mlx->info.person.x_camera, &mlx->info.person.y_camera, -1 * PI / 2);
+	mlx->info.person.x_camera *= tan(FOV / 2);
+	mlx->info.person.y_camera *= tan(FOV / 2);
+	printf("pos: %lf  %lf\n", mlx->info.person.x_camera, mlx->info.person.y_camera);
 }
 
-void	test_print(t_mlx *mlx)
-{
-	mlx->test++;
-	printf("%d: %d = x_pos: %lf    y_pos: %lf      x_angle: %lf    y_angle: %lf\n", mlx->test, mlx->key_state, mlx->info.person.x_pos, mlx->info.person.y_pos, mlx->info.person.x_dir, mlx->info.person.y_dir);
-}
+// void	test_print(t_mlx *mlx)
+// {
+// 	mlx->test++;
+// 	printf("%d: %d = x_pos: %lf    y_pos: %lf      x_angle: %lf    y_angle: %lf\n", mlx->test, mlx->key_state, mlx->info.person.x_pos, mlx->info.person.y_pos, mlx->info.person.x_dir, mlx->info.person.y_dir);
+// }
 
 void	person_move(t_mlx *mlx)
 {
@@ -53,7 +59,7 @@ void	person_move(t_mlx *mlx)
 	if (mlx->key_state & RIGHT_STATE && !(mlx->key_state & LEFT_STATE))
 		ft_turn(mlx, 'R');
 
-	test_print(mlx);
+	// test_print(mlx);
 }
 
 int	loop_main(t_mlx *mlx)

@@ -6,7 +6,7 @@
 /*   By: yuyu <yuyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 14:07:45 by yuyu              #+#    #+#             */
-/*   Updated: 2024/12/21 22:54:07 by yuyu             ###   ########.fr       */
+/*   Updated: 2024/12/22 00:20:23 by yuyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,11 @@ void	mlx_start(t_mlx *mlx)
 			&mlx->img.bits_per_pixel, &mlx->img.line_length, &mlx->img.endian);
 	if (!mlx->img.addr)
 		error_occur(mlx, "mlx_get_data_addr error", 1);
+	mlx->info.person.x_camera = mlx->info.person.x_dir;
+	mlx->info.person.y_camera = mlx->info.person.y_dir;
+	rotate_vector(&mlx->info.person.x_camera, &mlx->info.person.y_camera, -1 * FOV);
+	mlx->info.person.x_camera *= tan(FOV / 2);
+	mlx->info.person.y_camera *= tan(FOV / 2);
 }
 
 void	person_move(t_mlx *mlx)

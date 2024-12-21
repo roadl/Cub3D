@@ -6,7 +6,7 @@
 /*   By: yuyu <yuyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 14:02:43 by yuyu              #+#    #+#             */
-/*   Updated: 2024/12/21 22:37:54 by yuyu             ###   ########.fr       */
+/*   Updated: 2024/12/21 23:59:38 by yuyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # define KEY_RIGHT 124
 
 // map 충돌 방지
-# define SAFE_DISTANCE 1.15
+# define SAFE_DISTANCE 1.2
 # define ALMOSTZERO 1.0e-10
 
 # define PI 3.14159265359
@@ -74,5 +74,7 @@ void	ft_turn(t_mlx *mlx, char ch);
 //==================== execute_raycasting.c ====================
 void	render_sceen(t_mlx *mlx);
 void	ray_casting(t_mlx *mlx);
+
+void	rotate_vector(double *dx, double *dy, double angle);
 
 #endif

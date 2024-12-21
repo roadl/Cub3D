@@ -37,6 +37,8 @@ typedef struct s_person
 	double	y_pos; // SAFE_DISTANCE ~ (map_height - SAFE_DISTANCE)
 	double	x_dir; // normal vector
 	double	y_dir; // normal vectors
+	double	x_camera; // fov
+	double	y_camera;
 }	t_person;
 
 typedef struct s_info
