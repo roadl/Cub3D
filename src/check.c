@@ -6,14 +6,14 @@
 /*   By: yojin <yojin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 21:03:50 by yojin             #+#    #+#             */
-/*   Updated: 2024/12/20 22:24:19 by yojin            ###   ########.fr       */
+/*   Updated: 2024/12/21 16:43:56 by yojin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
 
 // 파일 열리는지 확인, .cub으로 끝나는지 확인
-void	check_file(char *path)
+void	check_cub_file(char *path)
 {
 	char	len;
 	int		fd;
@@ -33,35 +33,48 @@ void	check_file(char *path)
 		error_exit("The file must be a .cub extension\n");
 }
 
-static int	check_color(char *str)
+void	check_xpm_file(char *path)
 {
-	int	i;
-	int	n;
+	char	len;
+	int		fd;
 
-	i = 0;
-	if (!str[0] || str[i] == '\n')
-		return (0);
-	while (str[i] && str[i] != '\n')
-		if (!ft_isdigit(str[i++]))
-			return (0);
-	n = ft_atoi(str);
-	if (n < 0 || n > 255)
-		return (0);
-	return (1);
-}
-
-void	check_path_valid(char *path)
-{
-	int	fd;
-
+	printf("xpm check path:%s\n", path);
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
-		fail_exit();
+	{
+		printf("cannot open file\n");
+		perror("cub3d");
+		exit(EXIT_FAILURE);
+	}
 	close(fd);
 	fd = open(path, O_RDONLY | O_DIRECTORY);
 	if (fd != -1)
-		error_exit("Cannot open Directory!!\n");
-	close(fd);
+		error_exit("Cannot using Directory\n");
+	len = ft_strlen(path);
+	if (ft_strncmp(path + len - 4, ".xpm", 4) != 0)
+		error_exit("The image must be a .xpm extension\n");
+}
+
+static int	check_color(char *str)
+{
+	int		i;
+	int		n;
+	char	*trim;
+
+	trim = ft_strtrim(str, " \t\n");
+	if (!trim)
+		fail_exit();
+	i = 0;
+	if (!trim[0] || trim[i] == '\n')
+		return (0);
+	while (trim[i])
+		if (!ft_isdigit(trim[i++]))
+			return (0);
+	n = ft_atoi(trim);
+	free(trim);
+	if (n < 0 || n > 255)
+		return (0);
+	return (1);
 }
 
 void	check_color_valid(char **strs)

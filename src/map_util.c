@@ -6,11 +6,24 @@
 /*   By: yojin <yojin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 21:06:39 by yojin             #+#    #+#             */
-/*   Updated: 2024/12/20 21:09:28 by yojin            ###   ########.fr       */
+/*   Updated: 2024/12/21 15:52:26 by yojin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
+
+int	is_valid_point(t_info *info, int x, int y)
+{
+	if (info->map[y][x] != '0')
+		return (1);
+	if (x <= 0 || y <= 0 || \
+		x >= (info->map_width - 1) || y >= (info->map_height - 1))
+		return (0);
+	if (info->map[y - 1][x] == ' ' || info->map[y + 1][x] == ' ' || \
+		info->map[y][x - 1] == ' ' || info->map[y][x + 1] == ' ')
+		return (0);
+	return (1);
+}
 
 int	is_map_char(char c)
 {
