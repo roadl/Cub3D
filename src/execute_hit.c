@@ -6,7 +6,7 @@
 /*   By: yojin <yojin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 20:11:55 by yuyu              #+#    #+#             */
-/*   Updated: 2024/12/21 21:29:16 by yojin            ###   ########.fr       */
+/*   Updated: 2024/12/21 21:52:55 by yojin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	cal_hit_pos(t_mlx *mlx)
 {
-	if (mlx->ray.dy > 0 && mlx->hit.hit_dir == -3) // 방향들 잘 체크하기
+	if (mlx->ray.dy < 0 && mlx->hit.hit_dir == -3) // 방향들 잘 체크하기
 		mlx->hit.x_pos = 1 - mlx->hit.x_pos;
-	if (mlx->ray.dx < 0 && mlx->hit.hit_dir == -2)
+	if (mlx->ray.dx > 0 && mlx->hit.hit_dir == -2)
 		mlx->hit.x_pos = 1 - mlx->hit.x_pos;
 	// printf("texture coordinate: %lf", mlx->hit.x_pos);
 	if (mlx->hit.x_pos < 0)

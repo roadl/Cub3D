@@ -6,7 +6,7 @@
 /*   By: yojin <yojin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 16:21:59 by yuyu              #+#    #+#             */
-/*   Updated: 2024/12/21 21:29:19 by yojin            ###   ########.fr       */
+/*   Updated: 2024/12/21 21:47:20 by yojin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,13 +98,12 @@ void	ray_casting(t_mlx *mlx)
 		ray_setting(mlx, x);
 		dda_algorithm(mlx);
 		cal_hit_parameter(mlx);
-		// printf("hit.x_pos: %f, hit.dir: %d, distance: %f\n", mlx->hit.x_pos, mlx->hit.hit_dir, mlx->hit.distance);
-		texture_mapping(mlx, x); // 미완
+		texture_mapping(mlx, x);
 	}
 }
 
 void	render_sceen(t_mlx *mlx)
 {
 	ray_casting(mlx);
-	// mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, mlx->img.img_ptr, 0, 0);
+	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, mlx->img.img_ptr, 0, 0);
 }
