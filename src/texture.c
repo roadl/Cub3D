@@ -6,7 +6,7 @@
 /*   By: yojin <yojin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 22:29:36 by yojin             #+#    #+#             */
-/*   Updated: 2024/12/21 20:46:00 by yojin            ###   ########.fr       */
+/*   Updated: 2024/12/21 21:04:28 by yojin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,9 @@ void	texture_mapping(t_mlx *mlx, int window_x)
 
 	y = -1;
 	t = mlx->info.textures[NO];
-	printf("hit.x_pos: %f, distance: %f\n", mlx->hit.x_pos, mlx->hit.distance);
-	// printf("texture width: %d, height: %d\n", (int)(t.height), (int)(t.width));
-	// printf("texture[%d][%d]\n", (int)(t.height * y_ratio), (int)(t.width * mlx->hit.x_pos));
 	cal_texture_info(mlx, &y_ratio, &delta_y);
+	// printf("hit.x_pos: %f, hit.dir: %d, distance: %f\n", mlx->hit.x_pos, mlx->hit.hit_dir, mlx->hit.distance);
+	// printf("texture width: %d, height: %d\n", (int)(t.height), (int)(t.width));
 	while (++y < WIN_Y)
 	{
 		y_ratio += delta_y;
@@ -36,6 +35,7 @@ void	texture_mapping(t_mlx *mlx, int window_x)
 		else
 			color = t.texture[(int)(t.height * y_ratio)] \
 				[(int)(t.width * mlx->hit.x_pos)];
+		// printf("texture[%d][%d]\n", (int)(t.height * y_ratio), (int)(t.width * mlx->hit.x_pos));
 		// printf("color: %#X\n", color);
 		mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, window_x, y, color);
 	}

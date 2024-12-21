@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   execute.raycasting.c                               :+:      :+:    :+:   */
+/*   execute_raycasting.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yojin <yojin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 16:21:59 by yuyu              #+#    #+#             */
-/*   Updated: 2024/12/21 20:36:33 by yojin            ###   ########.fr       */
+/*   Updated: 2024/12/21 21:05:47 by yojin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execute.h"
 #include "parse.h"
 
-void	cal_sidedist(t_mlx *mlx) // 이거 소수점 오차도 나중에 생각해서 고쳐야함. map으로 해결한듯.
+static void	cal_sidedist(t_mlx *mlx) // 이거 소수점 오차도 나중에 생각해서 고쳐야함. map으로 해결한듯.
 {
 	if (mlx->ray.dx < 0)
 	{
@@ -41,14 +41,15 @@ void	cal_sidedist(t_mlx *mlx) // 이거 소수점 오차도 나중에 생각해�
 	}
 }
 
-void	ray_setting(t_mlx *mlx, int x) // 미완
+static void	ray_setting(t_mlx *mlx, int x)
 {
 	double	angle;
 	// 현재 위치
 	mlx->ray.x_pos = (int)(mlx->info.person.x_pos);
 	mlx->ray.y_pos = (int)(mlx->info.person.y_pos);
 	angle = FOV - x * DIV_ANGLE; // 메이비 왼쪽부터?
-	mlx->ray.dx = mlx->info.person.x_dir * cos(angle) - mlx->info.person.y_dir * sin(angle);
+	mlx->ray.dx = mlx->info.person.x_dir
+		* cos(angle) - mlx->info.person.y_dir * sin(angle);
 	mlx->ray.dy = mlx->info.person.x_dir
 		* sin(angle) + mlx->info.person.y_dir * cos(angle);
 	if (fabs(mlx->ray.dx) < ALMOSTZERO)
@@ -62,7 +63,7 @@ void	ray_setting(t_mlx *mlx, int x) // 미완
 	cal_sidedist(mlx);
 }
 
-void	dda_algorithm(t_mlx *mlx)
+static void	dda_algorithm(t_mlx *mlx)
 {
 	bool	hit;
 
@@ -87,46 +88,9 @@ void	dda_algorithm(t_mlx *mlx)
 	}
 }
 
-void	cal_hit_pos(t_mlx *mlx)
-{
-	if (mlx->ray.dy > 0 && mlx->hit.hit_dir == -3)
-		mlx->hit.x_pos = 1 - mlx->hit.x_pos;
-	if (mlx->ray.dx > 0 && mlx->hit.hit_dir == -2)
-		mlx->hit.x_pos = 1 - mlx->hit.x_pos;
-
-	printf("texture coordinate: %f\n", mlx->hit.x_pos);
-	if (mlx->hit.x_pos < 0)
-		mlx->hit.x_pos = 0;
-	else if (mlx->hit.x_pos > 1)
-		mlx->hit.x_pos = 1;
-}
-
-// void	cal_hit_dir(t_mlx *mlx)
-// {
-	
-// }
-
-void	cal_hit_parameter(t_mlx *mlx)
-{
-	if (mlx->hit.hit_dir == -2)
-	{
-		mlx->hit.distance = mlx->ray.x_dist - mlx->ray.delta_x;
-		mlx->hit.x_pos = mlx->info.person.y_pos + mlx->ray.dy * mlx->hit.distance - mlx->ray.y_pos;
-	}
-	if (mlx->hit.hit_dir == -3)
-	{
-		mlx->hit.distance = mlx->ray.y_dist - mlx->ray.delta_y;
-		mlx->hit.x_pos = mlx->info.person.x_pos + mlx->ray.dx * mlx->hit.distance - mlx->ray.x_pos;
-	}
-	else
-		error_occur(mlx, "hit error", 1);
-	cal_hit_pos(mlx);
-	// cal_hit_dir(mlx);
-}
-
 void	ray_casting(t_mlx *mlx)
 {
-	int x;
+	int	x;
 
 	x = -1;
 	while (++x < WIN_X)
@@ -134,12 +98,13 @@ void	ray_casting(t_mlx *mlx)
 		ray_setting(mlx, x);
 		dda_algorithm(mlx);
 		cal_hit_parameter(mlx);
+		printf("hit.x_pos: %f, hit.dir: %d, distance: %f\n", mlx->hit.x_pos, mlx->hit.hit_dir, mlx->hit.distance);
 		texture_mapping(mlx, x); // 미완
 	}
 }
 
-void	render_sceen(t_mlx *mlx) // 미완
+void	render_sceen(t_mlx *mlx)
 {
 	ray_casting(mlx);
-	//draw_sceen(mlx);
+	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, mlx->img.img_ptr, 0, 0);
 }

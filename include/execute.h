@@ -6,7 +6,7 @@
 /*   By: yojin <yojin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 14:02:43 by yuyu              #+#    #+#             */
-/*   Updated: 2024/12/21 20:43:43 by yojin            ###   ########.fr       */
+/*   Updated: 2024/12/21 20:52:32 by yojin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,11 @@ typedef enum e_key_flag
 int		program_end(t_mlx *mlx);
 void	error_occur(t_mlx *mlx, char *custom_msg, int e_code);
 
+//==================== execute_hit.c ====================
+void	cal_hit_pos(t_mlx *mlx);
+void	cal_hit_dir(t_mlx *mlx);
+void	cal_hit_parameter(t_mlx *mlx);
+
 //==================== execute_hook.c ====================
 int		key_press(int keycode, t_mlx *mlx);
 int		key_release(int keycode, t_mlx *mlx);
@@ -68,5 +73,6 @@ void	ft_turn(t_mlx *mlx, char ch);
 
 //==================== execute_raycasting.c ====================
 void	render_sceen(t_mlx *mlx);
+void	ray_casting(t_mlx *mlx);
 
 #endif
