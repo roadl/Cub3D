@@ -6,7 +6,7 @@
 /*   By: yuyu <yuyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 22:29:36 by yojin             #+#    #+#             */
-/*   Updated: 2024/12/21 21:17:36 by yuyu             ###   ########.fr       */
+/*   Updated: 2024/12/21 22:02:55 by yuyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	texture_mapping(t_mlx *mlx, int window_x)
 	cal_texture_info(mlx, &y_ratio, &delta_y);
 	printf("hit.x_pos: %f, hit.dir: %d, distance: %f\n", mlx->hit.x_pos, mlx->hit.hit_dir, mlx->hit.distance);
 	// printf("texture width: %d, height: %d\n", (int)(t.height), (int)(t.width));
+	// printf("y_ratio: %f, delta_y: %f\n", y_ratio, delta_y);
 	while (++y < WIN_Y)
 	{
 		y_ratio += delta_y;
@@ -35,6 +36,7 @@ void	texture_mapping(t_mlx *mlx, int window_x)
 		else
 			color = t.texture[(int)(t.height * y_ratio)] \
 				[(int)(t.width * mlx->hit.x_pos)];
+		// printf("y_ratio: %f, delta_y: %f\n", y_ratio, delta_y);
 		// printf("texture[%d][%d]\n", (int)(t.height * y_ratio), (int)(t.width * mlx->hit.x_pos));
 		// printf("color: %#X\n", color);
 		mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, window_x, y, color);
