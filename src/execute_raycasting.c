@@ -6,7 +6,7 @@
 /*   By: yojin <yojin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 16:21:59 by yuyu              #+#    #+#             */
-/*   Updated: 2024/12/21 21:05:47 by yojin            ###   ########.fr       */
+/*   Updated: 2024/12/21 21:29:19 by yojin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,25 +18,25 @@ static void	cal_sidedist(t_mlx *mlx) // 이거 소수점 오차도 나중에 생
 	if (mlx->ray.dx < 0)
 	{
 		mlx->ray.x_step = -1;
-		mlx->ray.x_dist += (mlx->info.person.x_pos - mlx->ray.x_pos)
+		mlx->ray.x_dist = (mlx->info.person.x_pos - mlx->ray.x_pos)
 			* mlx->ray.delta_x;
 	}
 	else
 	{
 		mlx->ray.x_step = 1;
-		mlx->ray.x_dist += (mlx->ray.x_pos + 1 - mlx->info.person.x_pos)
+		mlx->ray.x_dist = (mlx->ray.x_pos + 1 - mlx->info.person.x_pos)
 			* mlx->ray.delta_x;
 	}
 	if (mlx->ray.dy < 0)
 	{
 		mlx->ray.y_step = -1;
-		mlx->ray.y_dist += (mlx->info.person.y_pos - mlx->ray.y_pos)
+		mlx->ray.y_dist = (mlx->info.person.y_pos - mlx->ray.y_pos)
 			* mlx->ray.delta_y;
 	}
 	else
 	{
 		mlx->ray.y_step = 1;
-		mlx->ray.y_dist += (mlx->ray.y_pos + 1 - mlx->info.person.y_pos)
+		mlx->ray.y_dist = (mlx->ray.y_pos + 1 - mlx->info.person.y_pos)
 			* mlx->ray.delta_y;
 	}
 }
@@ -98,7 +98,7 @@ void	ray_casting(t_mlx *mlx)
 		ray_setting(mlx, x);
 		dda_algorithm(mlx);
 		cal_hit_parameter(mlx);
-		printf("hit.x_pos: %f, hit.dir: %d, distance: %f\n", mlx->hit.x_pos, mlx->hit.hit_dir, mlx->hit.distance);
+		// printf("hit.x_pos: %f, hit.dir: %d, distance: %f\n", mlx->hit.x_pos, mlx->hit.hit_dir, mlx->hit.distance);
 		texture_mapping(mlx, x); // 미완
 	}
 }
@@ -106,5 +106,5 @@ void	ray_casting(t_mlx *mlx)
 void	render_sceen(t_mlx *mlx)
 {
 	ray_casting(mlx);
-	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, mlx->img.img_ptr, 0, 0);
+	// mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, mlx->img.img_ptr, 0, 0);
 }
