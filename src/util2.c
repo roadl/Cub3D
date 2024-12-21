@@ -6,14 +6,12 @@
 /*   By: yuyu <yuyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 21:05:07 by yojin             #+#    #+#             */
-/*   Updated: 2024/12/21 22:53:07 by yuyu             ###   ########.fr       */
+/*   Updated: 2024/12/22 00:27:08 by yuyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
 #include "execute.h"
-
-#define OFFSET 3
 
 void	init_info(t_info *info)
 {
