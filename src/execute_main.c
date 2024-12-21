@@ -6,17 +6,17 @@
 /*   By: yuyu <yuyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 14:07:45 by yuyu              #+#    #+#             */
-/*   Updated: 2024/12/21 20:37:08 by yuyu             ###   ########.fr       */
+/*   Updated: 2024/12/21 20:54:49 by yuyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execute.h"
 
-// void	test_print(t_mlx *mlx)
-// {
-// 	mlx->test++;
-// 	printf("%d: %d = x_pos: %lf    y_pos: %lf      x_angle: %lf    y_angle: %lf\n", mlx->test, mlx->key_state, mlx->info.person.x_pos, mlx->info.person.y_pos, mlx->info.person.x_dir, mlx->info.person.y_dir);
-// }
+void	test_print(t_mlx *mlx)
+{
+	mlx->test++;
+	printf("%d: %d = x_pos: %lf    y_pos: %lf      x_angle: %lf    y_angle: %lf\n", mlx->test, mlx->key_state, mlx->info.person.x_pos, mlx->info.person.y_pos, mlx->info.person.x_dir, mlx->info.person.y_dir);
+}
 
 void	mlx_start(t_mlx *mlx)
 {
@@ -46,7 +46,7 @@ void	person_move(t_mlx *mlx)
 	if (mlx->key_state & RIGHT_STATE && !(mlx->key_state & LEFT_STATE))
 		ft_turn(mlx, 'R');
 	// 나중에 지우기
-	// test_print(mlx);
+	test_print(mlx);
 }
 
 int	loop_main(t_mlx *mlx)
@@ -60,6 +60,7 @@ int	loop_main(t_mlx *mlx)
 
 int	execute_main(t_mlx *mlx)
 {
+	printf("start main\n");
 	mlx_start(mlx);
 	render_sceen(mlx);
 	mlx_hook(mlx->win_ptr, X_EVNET_EXIT, 0, &program_end, mlx);
@@ -82,7 +83,9 @@ int	execute_main(t_mlx *mlx)
 // 	mlx.info.map_width = 40;
 // 	for (int i = 0; i < mlx.info.map_height; i++)
 // 	{
-// 		for (int j = 0; j < mlx.info.map_width; j++)
+// 		mlx.info.map[i][0] = '1';
+// 		mlx.info.map[i][mlx.info.map_width - 1] = '1';
+// 		for (int j = 1; j < mlx.info.map_width - 1; j++)
 // 			mlx.info.map[i][j] = '0';
 // 	}
 // 	execute_main(&mlx);

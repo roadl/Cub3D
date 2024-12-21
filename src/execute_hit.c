@@ -6,7 +6,7 @@
 /*   By: yuyu <yuyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 20:11:55 by yuyu              #+#    #+#             */
-/*   Updated: 2024/12/21 20:24:20 by yuyu             ###   ########.fr       */
+/*   Updated: 2024/12/21 20:41:27 by yuyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	cal_hit_pos(t_mlx *mlx)
 		mlx->hit.x_pos = 1 - mlx->hit.x_pos;
 	if (mlx->ray.dx < 0 && mlx->hit.hit_dir == -2)
 		mlx->hit.x_pos = 1 - mlx->hit.x_pos;
-	// printf("texture coordinate: %lf", mlx->hit.x_pos);
+	printf("texture coordinate: %lf\n", mlx->hit.x_pos);
 	if (mlx->hit.x_pos < 0)
 		mlx->hit.x_pos = 0;
 	else if (mlx->hit.x_pos > 1)

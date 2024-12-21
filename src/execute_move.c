@@ -6,7 +6,7 @@
 /*   By: yuyu <yuyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 19:47:17 by yuyu              #+#    #+#             */
-/*   Updated: 2024/12/21 20:25:24 by yuyu             ###   ########.fr       */
+/*   Updated: 2024/12/21 20:39:56 by yuyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ void	ft_move_w(t_mlx *mlx)
 		&& mlx->info.map[(int)(mlx->info.person.y_pos + dy)]
 		[(int)mlx->info.person.x_pos] == '0')
 		mlx->info.person.y_pos += dy;
-	// else
-		// printf("%lf no", mlx->info.person.y_pos + dy - SAFE_DISTANCE);
 }
 
 void	ft_move_a(t_mlx *mlx)

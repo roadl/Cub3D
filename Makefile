@@ -9,9 +9,23 @@ SRC_DIR = ./src
 MLX_DIR = ./mlx
 MLX = libmlx.a
 HEADER = $(INC_DIR)/cub3d.h $(INC_DIR)/parse.h
-SRCS =	src/cub3d.c src/parse.c src/util.c src/util2.c src/check.c \
-		src/map.c src/map_util.c src/debug.c src/texture.c \
-		src/execute_error.c src/execute_hook.c src/execute_move.c src/execute.raycasting.c  
+SRCS =	cub3d.c \
+		parse.c \
+		util.c \
+		util2.c \
+		check.c \
+		map.c \
+		map_util.c \
+		debug.c \
+		texture.c \
+		execute_error.c \
+		execute_hit.c	\
+		execute_hook.c \
+		execute_main.c	\
+		execute_move.c	\
+		execute_raycasting.c	\
+
+SRCS := $(addprefix $(SRC_DIR)/, $(SRCS))
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)

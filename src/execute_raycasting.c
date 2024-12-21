@@ -6,11 +6,12 @@
 /*   By: yuyu <yuyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 16:21:59 by yuyu              #+#    #+#             */
-/*   Updated: 2024/12/21 20:37:38 by yuyu             ###   ########.fr       */
+/*   Updated: 2024/12/21 20:49:19 by yuyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execute.h"
+#include "parse.h"
 
 static void	cal_sidedist(t_mlx *mlx) // 이거 소수점 오차도 나중에 생각해서 고쳐야함. map으로 해결한듯.
 {
@@ -42,7 +43,6 @@ static void	cal_sidedist(t_mlx *mlx) // 이거 소수점 오차도 나중에 생
 
 static void	ray_setting(t_mlx *mlx, int x)
 {
-	double	temp;
 	double	angle;
 	// 현재 위치
 	mlx->ray.x_pos = (int)(mlx->info.person.x_pos);
@@ -95,6 +95,7 @@ void	ray_casting(t_mlx *mlx)
 	x = -1;
 	while (++x < WIN_X)
 	{
+		printf("ray casting.. x= %d\n", x);
 		ray_setting(mlx, x);
 		dda_algorithm(mlx);
 		cal_hit_parameter(mlx);
