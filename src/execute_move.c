@@ -6,7 +6,7 @@
 /*   By: yuyu <yuyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 19:47:17 by yuyu              #+#    #+#             */
-/*   Updated: 2024/12/21 22:01:27 by yuyu             ###   ########.fr       */
+/*   Updated: 2024/12/21 22:14:34 by yuyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	ft_move_w(t_mlx *mlx)
 	dx = mlx->info.person.x_dir * MOVE_SPEED;
 	dy = mlx->info.person.y_dir * MOVE_SPEED;
 
-	if (check_vaild_pos(mlx, dx, dy))
+	if (!check_vaild_pos(mlx, dx, dy))
 		return ;
 	if (mlx->info.map[(int)(mlx->info.person.y_pos)][(int)(mlx->info.person.x_pos + dx * SAFE_DISTANCE)])
 		mlx->info.person.x_pos += dx;
@@ -55,8 +55,8 @@ void	ft_move_a(t_mlx *mlx)
 	dx = mlx->info.person.x_dir * MOVE_SPEED;
 	dy = mlx->info.person.y_dir * MOVE_SPEED;
 
-	rotate_vector(&dx, &dy, 90);
-	if (check_vaild_pos(mlx, dx, dy))
+	rotate_vector(&dx, &dy, PI/2);
+	if (!check_vaild_pos(mlx, dx, dy))
 		return ;
 	if (mlx->info.map[(int)(mlx->info.person.y_pos)][(int)(mlx->info.person.x_pos + dx * SAFE_DISTANCE)])
 		mlx->info.person.x_pos += dx;
@@ -72,8 +72,8 @@ void	ft_move_s(t_mlx *mlx)
 	dx = mlx->info.person.x_dir * MOVE_SPEED;
 	dy = mlx->info.person.y_dir * MOVE_SPEED;
 
-	rotate_vector(&dx, &dy, 180);
-	if (check_vaild_pos(mlx, dx, dy))
+	rotate_vector(&dx, &dy, PI);
+	if (!check_vaild_pos(mlx, dx, dy))
 		return ;
 	if (mlx->info.map[(int)(mlx->info.person.y_pos)][(int)(mlx->info.person.x_pos + dx * SAFE_DISTANCE)])
 		mlx->info.person.x_pos += dx;
@@ -89,8 +89,8 @@ void	ft_move_d(t_mlx *mlx)
 	dx = mlx->info.person.x_dir * MOVE_SPEED;
 	dy = mlx->info.person.y_dir * MOVE_SPEED;
 
-	rotate_vector(&dx, &dy, 270);
-	if (check_vaild_pos(mlx, dx, dy))
+	rotate_vector(&dx, &dy, -1 * PI / 2);
+	if (!check_vaild_pos(mlx, dx, dy))
 		return ;
 	if (mlx->info.map[(int)(mlx->info.person.y_pos)][(int)(mlx->info.person.x_pos + dx * SAFE_DISTANCE)])
 		mlx->info.person.x_pos += dx;

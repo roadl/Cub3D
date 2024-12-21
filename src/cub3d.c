@@ -6,7 +6,7 @@
 /*   By: yuyu <yuyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 21:09:47 by yojin             #+#    #+#             */
-/*   Updated: 2024/12/21 21:16:24 by yuyu             ###   ########.fr       */
+/*   Updated: 2024/12/21 22:08:10 by yuyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,12 @@ void	mlx_start(t_mlx *mlx)
 	init_textures(mlx);
 }
 
+void	test_print(t_mlx *mlx)
+{
+	mlx->test++;
+	printf("%d: %d = x_pos: %lf    y_pos: %lf      x_angle: %lf    y_angle: %lf\n", mlx->test, mlx->key_state, mlx->info.person.x_pos, mlx->info.person.y_pos, mlx->info.person.x_dir, mlx->info.person.y_dir);
+}
+
 void	person_move(t_mlx *mlx)
 {
 	if (mlx->key_state & W_STATE && !(mlx->key_state & S_STATE))
@@ -46,6 +52,8 @@ void	person_move(t_mlx *mlx)
 		ft_turn(mlx, 'L');
 	if (mlx->key_state & RIGHT_STATE && !(mlx->key_state & LEFT_STATE))
 		ft_turn(mlx, 'R');
+
+	test_print(mlx);
 }
 
 int	loop_main(t_mlx *mlx)
