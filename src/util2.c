@@ -3,15 +3,55 @@
 /*                                                        :::      ::::::::   */
 /*   util2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yuyu <yuyu@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: yojin <yojin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 21:05:07 by yojin             #+#    #+#             */
-/*   Updated: 2024/12/22 00:34:07 by yuyu             ###   ########.fr       */
+/*   Updated: 2024/12/22 01:46:06 by yojin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
 #include "execute.h"
+
+static unsigned long	ft_strtol(char *str, int sign)
+{
+	unsigned long	i;
+	unsigned long	ans;
+	unsigned long	before;
+
+	i = 0;
+	ans = 0;
+	before = 0;
+	while (str[i] && ft_isdigit(str[i]))
+	{
+		ans = ans * 10 + str[i] - '0';
+		if (before > ans && sign == 1)
+			error_exit("Invalid Color Value!!\n");
+		else if (ans >= 2147483648 && sign == 1)
+			error_exit("Invalid Color Value!!\n");
+		before = ans;
+		i++;
+	}
+	return (sign * ans);
+}
+
+int	int_atoi(const char *str)
+{
+	int	i;
+	int	sign;
+
+	sign = 1;
+	i = 0;
+	while (str[i] && ft_isspace(str[i]))
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			sign = -1;
+		i++;
+	}
+	return ((int)ft_strtol((char *)(str + i), sign));
+}
 
 void	init_info(t_info *info)
 {

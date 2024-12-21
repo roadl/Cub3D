@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yojin <yojin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: yuyu <yuyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 21:09:54 by yojin             #+#    #+#             */
-/*   Updated: 2024/12/21 20:07:35 by yojin            ###   ########.fr       */
+/*   Updated: 2024/12/22 02:08:50 by yuyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,18 +89,22 @@ void	check_map_valid(t_info *info)
 {
 	int	y;
 	int	x;
+	int	flag;
 
 	y = -1;
 	while (++y < info->map_height)
 	{
+		flag = 0;
 		x = -1;
 		while (++x < info->map_width)
 		{
 			if (ft_isalpha(info->map[y][x]))
 				init_player(info, x, y);
-			if (!is_valid_point(info, x, y))
+			if (!is_valid_point(info, x, y, &flag))
 				error_exit("Invalid Map!!\n");
-		}	
+		}
+		if (!flag)
+			error_exit("Invalid Map!!\n");
 	}
 	if (info->person.x_pos < 0)
 		error_exit("No Player in map!!\n");

@@ -6,7 +6,7 @@
 /*   By: yuyu <yuyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 00:40:31 by yuyu              #+#    #+#             */
-/*   Updated: 2024/12/22 00:40:33 by yuyu             ###   ########.fr       */
+/*   Updated: 2024/12/22 02:10:16 by yuyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	error_exit(const char *error_msg);
 int		open_with_check(char *path, int opt);
 
 // util2.c
+int		int_atoi(const char *str);
 void	init_info(t_info *info);
 void	cal_texture_info(t_mlx *mlx, double *y_ratio, double *delta_y);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
@@ -42,7 +43,7 @@ int		is_line_map(char *line);
 void	parse_map(t_info *info, char *path);
 
 //map_util.c
-int		is_valid_point(t_info *info, int x, int y);
+int		is_valid_point(t_info *info, int x, int y, int *flag);
 int		is_map_char(char c);
 int		is_line_map(char *line);
 int		cal_width(char *line);

@@ -6,7 +6,7 @@
 /*   By: yojin <yojin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 21:03:50 by yojin             #+#    #+#             */
-/*   Updated: 2024/12/21 23:00:09 by yojin            ###   ########.fr       */
+/*   Updated: 2024/12/22 01:46:40 by yojin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static int	check_color(char *str)
 	while (trim[i])
 		if (!ft_isdigit(trim[i++]))
 			return (0);
-	n = ft_atoi(trim);
+	n = int_atoi(trim);
 	free(trim);
 	if (n < 0 || n > 255)
 		return (0);
