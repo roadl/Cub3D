@@ -6,17 +6,17 @@
 /*   By: yuyu <yuyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 14:07:45 by yuyu              #+#    #+#             */
-/*   Updated: 2024/12/21 22:16:02 by yuyu             ###   ########.fr       */
+/*   Updated: 2024/12/21 22:54:07 by yuyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execute.h"
 
-void	test_print(t_mlx *mlx)
-{
-	mlx->test++;
-	printf("%d: %d = x_pos: %lf    y_pos: %lf      x_angle: %lf    y_angle: %lf\n", mlx->test, mlx->key_state, mlx->info.person.x_pos, mlx->info.person.y_pos, mlx->info.person.x_dir, mlx->info.person.y_dir);
-}
+// void	test_print(t_mlx *mlx)
+// {
+// 	mlx->test++;
+// 	printf("%d: %d = x_pos: %lf    y_pos: %lf      x_angle: %lf    y_angle: %lf\n", mlx->test, mlx->key_state, mlx->info.person.x_pos, mlx->info.person.y_pos, mlx->info.person.x_dir, mlx->info.person.y_dir);
+// }
 
 void	mlx_start(t_mlx *mlx)
 {
