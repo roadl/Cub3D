@@ -6,7 +6,7 @@
 /*   By: yuyu <yuyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 00:40:31 by yuyu              #+#    #+#             */
-/*   Updated: 2024/12/22 00:40:33 by yuyu             ###   ########.fr       */
+/*   Updated: 2024/12/22 01:56:16 by yuyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int		is_line_map(char *line);
 void	parse_map(t_info *info, char *path);
 
 //map_util.c
-int		is_valid_point(t_info *info, int x, int y);
+int		is_valid_point(t_info *info, int x, int y, int *flag);
 int		is_map_char(char c);
 int		is_line_map(char *line);
 int		cal_width(char *line);
