@@ -6,12 +6,11 @@
 /*   By: yojin <yojin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 21:04:33 by yojin             #+#    #+#             */
-/*   Updated: 2024/12/21 16:40:54 by yojin            ###   ########.fr       */
+/*   Updated: 2024/12/21 20:17:04 by yojin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
-#include "../gnl/get_next_line.h"
 
 static void	get_path_info(char *line, char **target)
 {

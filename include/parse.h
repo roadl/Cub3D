@@ -15,6 +15,7 @@ int		open_with_check(char *path, int opt);
 
 // util2.c
 void	init_info(t_info *info);
+void	cal_texture_info(t_mlx *mlx, double *y_ratio, double *delta_y);
 
 //check.c
 void	check_cub_file(char *path);
@@ -35,7 +36,8 @@ int		cal_width(char *line);
 void	copy_line(char *map_row, char *line, int width);
 
 //texture.c
-void	print_texture_line(t_mlx *mlx, double x_ratio, int distance, int wall, int window_x);
+//void	print_texture_line(t_mlx *mlx, double x_ratio, int distance, int wall, int window_x);
+void	texture_mapping(t_mlx *mlx, int window_x);
 void	init_textures(t_mlx *mlx);
 
 //debug.c

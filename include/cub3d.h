@@ -33,20 +33,7 @@ typedef struct s_person
 	double	y_pos; // SAFE_DISTANCE ~ (map_height - SAFE_DISTANCE)
 	double	x_dir; // normal vector
 	double	y_dir; // normal vectors
-} t_person;
-
-typedef struct s_info
-{
-	char		*cub_path;
-	// char		**map;
-	char		map[40][40]; // test
-	int			map_width;
-	int			map_height;
-	t_color		floor_color;
-	t_color		celling_color;
-	t_texture	textures[4];
-	t_person	person;
-}	t_info;
+}	t_person;
 
 typedef struct s_info
 {

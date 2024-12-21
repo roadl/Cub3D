@@ -6,7 +6,7 @@
 /*   By: yuyu <yuyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 14:07:45 by yuyu              #+#    #+#             */
-/*   Updated: 2024/12/21 20:25:01 by yuyu             ###   ########.fr       */
+/*   Updated: 2024/12/21 20:37:08 by yuyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	mlx_start(t_mlx *mlx)
 			&mlx->img.bits_per_pixel, &mlx->img.line_length, &mlx->img.endian);
 	if (!mlx->img.addr)
 		error_occur(mlx, "mlx_get_data_addr error", 1);
-	// 나머지 초기화 작업.
 }
 
 void	person_move(t_mlx *mlx)
