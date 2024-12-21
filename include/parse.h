@@ -6,7 +6,7 @@
 /*   By: yuyu <yuyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 00:40:31 by yuyu              #+#    #+#             */
-/*   Updated: 2024/12/22 01:56:16 by yuyu             ###   ########.fr       */
+/*   Updated: 2024/12/22 02:10:16 by yuyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	error_exit(const char *error_msg);
 int		open_with_check(char *path, int opt);
 
 // util2.c
+int		int_atoi(const char *str);
 void	init_info(t_info *info);
 void	cal_texture_info(t_mlx *mlx, double *y_ratio, double *delta_y);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
