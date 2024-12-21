@@ -6,7 +6,7 @@
 /*   By: yuyu <yuyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 19:47:17 by yuyu              #+#    #+#             */
-/*   Updated: 2024/12/20 22:02:02 by yuyu             ###   ########.fr       */
+/*   Updated: 2024/12/21 20:25:24 by yuyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,12 @@ void	ft_turn(t_mlx *mlx, char ch)
 	double	temp;
 	double	angle;
 
-	if (ch == 'l') // 방향 체크해보기
+	if (ch == 'L') // 방향 체크해보기
 		angle = (double)TURN_SPEED;
 	else
 		angle = (double)(-1 * TURN_SPEED);
-	temp = mlx->info.person.x_dir * cos(angle) - mlx->info.person.y_dir * sin(angle);
+	temp = mlx->info.person.x_dir * cos(angle)
+		- mlx->info.person.y_dir * sin(angle);
 	mlx->info.person.y_dir = mlx->info.person.x_dir
 		* sin(angle) + mlx->info.person.y_dir * cos(angle);
 	mlx->info.person.x_dir = temp;

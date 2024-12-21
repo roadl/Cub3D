@@ -6,17 +6,17 @@
 /*   By: yuyu <yuyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 14:07:45 by yuyu              #+#    #+#             */
-/*   Updated: 2024/12/21 16:21:44 by yuyu             ###   ########.fr       */
+/*   Updated: 2024/12/21 20:25:01 by yuyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execute.h"
 
-void	test_print(t_mlx *mlx)
-{
-	mlx->test++;
-	printf("%d: %d = x_pos: %lf    y_pos: %lf      x_angle: %lf    y_angle: %lf\n", mlx->test, mlx->key_state, mlx->info.person.x_pos, mlx->info.person.y_pos, mlx->info.person.x_dir, mlx->info.person.y_dir);
-}
+// void	test_print(t_mlx *mlx)
+// {
+// 	mlx->test++;
+// 	printf("%d: %d = x_pos: %lf    y_pos: %lf      x_angle: %lf    y_angle: %lf\n", mlx->test, mlx->key_state, mlx->info.person.x_pos, mlx->info.person.y_pos, mlx->info.person.x_dir, mlx->info.person.y_dir);
+// }
 
 void	mlx_start(t_mlx *mlx)
 {
@@ -46,7 +46,6 @@ void	person_move(t_mlx *mlx)
 		ft_turn(mlx, 'L');
 	if (mlx->key_state & RIGHT_STATE && !(mlx->key_state & LEFT_STATE))
 		ft_turn(mlx, 'R');
-
 	// 나중에 지우기
 	// test_print(mlx);
 }
@@ -72,21 +71,21 @@ int	execute_main(t_mlx *mlx)
 	return (0);
 }
 
-int	main(void)
-{
-	t_mlx	mlx;
+// int	main(void)
+// {
+// 	t_mlx	mlx;
 
-	ft_memset(&mlx, 0, sizeof(mlx));
-	mlx.info.person.x_pos = 1.5;
-	mlx.info.person.y_pos = 1.5;
-	mlx.info.person.x_dir = 1;
-	mlx.info.map_height = 40;
-	mlx.info.map_width = 40;
-	for (int i = 0; i < mlx.info.map_height; i++)
-	{
-		for (int j = 0; j < mlx.info.map_width; j++)
-			mlx.info.map[i][j] = '0';
-	}
-	execute_main(&mlx);
-	return (0);
-}
+// 	ft_memset(&mlx, 0, sizeof(mlx));
+// 	mlx.info.person.x_pos = 1.5;
+// 	mlx.info.person.y_pos = 1.5;
+// 	mlx.info.person.x_dir = 1;
+// 	mlx.info.map_height = 40;
+// 	mlx.info.map_width = 40;
+// 	for (int i = 0; i < mlx.info.map_height; i++)
+// 	{
+// 		for (int j = 0; j < mlx.info.map_width; j++)
+// 			mlx.info.map[i][j] = '0';
+// 	}
+// 	execute_main(&mlx);
+// 	return (0);
+// }

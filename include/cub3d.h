@@ -85,9 +85,9 @@ typedef struct s_ray
 
 typedef struct s_hit
 {
-	int	hit_dir; // 북남서동 => 0,1,2,3
-	int	distance;
-	int	x_pos; // texture coordinate
+	int		hit_dir; // 북남서동 => 0,1,2,3
+	double	distance;
+	double	x_pos; // texture coordinate
 }	t_hit;
 
 typedef struct s_mlx

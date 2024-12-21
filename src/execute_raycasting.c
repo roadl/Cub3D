@@ -6,13 +6,13 @@
 /*   By: yuyu <yuyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 16:21:59 by yuyu              #+#    #+#             */
-/*   Updated: 2024/12/21 20:14:51 by yuyu             ###   ########.fr       */
+/*   Updated: 2024/12/21 20:26:05 by yuyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execute.h"
 
-void	cal_sidedist(t_mlx *mlx) // 이거 소수점 오차도 나중에 생각해서 고쳐야함. map으로 해결한듯.
+static void	cal_sidedist(t_mlx *mlx) // 이거 소수점 오차도 나중에 생각해서 고쳐야함. map으로 해결한듯.
 {
 	if (mlx->ray.dx < 0)
 	{
@@ -40,7 +40,7 @@ void	cal_sidedist(t_mlx *mlx) // 이거 소수점 오차도 나중에 생각해�
 	}
 }
 
-void	ray_setting(t_mlx *mlx, int x) // 미완
+static void	ray_setting(t_mlx *mlx, int x)
 {
 	double	temp;
 	double	angle;
@@ -48,7 +48,8 @@ void	ray_setting(t_mlx *mlx, int x) // 미완
 	mlx->ray.x_pos = (int)(mlx->info.person.x_pos);
 	mlx->ray.y_pos = (int)(mlx->info.person.y_pos);
 	angle = FOV - x * DIV_ANGLE; // 메이비 왼쪽부터?
-	mlx->ray.dx = mlx->info.person.x_dir * cos(angle) - mlx->info.person.y_dir * sin(angle);
+	mlx->ray.dx = mlx->info.person.x_dir
+		* cos(angle) - mlx->info.person.y_dir * sin(angle);
 	mlx->ray.dy = mlx->info.person.x_dir
 		* sin(angle) + mlx->info.person.y_dir * cos(angle);
 	if (fabs(mlx->ray.dx) < ALMOSTZERO)
@@ -62,7 +63,7 @@ void	ray_setting(t_mlx *mlx, int x) // 미완
 	cal_sidedist(mlx);
 }
 
-void	dda_algorithm(t_mlx *mlx)
+static void	dda_algorithm(t_mlx *mlx)
 {
 	bool	hit;
 
@@ -89,7 +90,7 @@ void	dda_algorithm(t_mlx *mlx)
 
 void	ray_casting(t_mlx *mlx)
 {
-	int x;
+	int	x;
 
 	x = -1;
 	while (++x < WIN_X)
