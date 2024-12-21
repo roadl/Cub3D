@@ -7,7 +7,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <stdbool.h>
-# include <errno.h> // 이거 errno써도 되려나.. MiniLibX에서 잘 처리 안한다고 함.
+# include <errno.h>
 # include <mlx.h>
 # include <math.h>
 
@@ -72,7 +72,7 @@ typedef struct s_ray
 
 typedef struct s_hit
 {
-	int		hit_dir; // w,a,s,d => 0,1,2,3
+	int		hit_dir; // 북남서동 => 0,1,2,3
 	double	distance;
 	double	x_pos; // texture coordinate
 }	t_hit;
