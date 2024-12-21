@@ -1,6 +1,10 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 
+// win size
+# define WIN_X 800
+# define WIN_Y 600
+
 # include <stdio.h>
 # include <fcntl.h>
 # include <unistd.h>

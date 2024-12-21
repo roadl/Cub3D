@@ -6,7 +6,7 @@
 /*   By: yojin <yojin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 14:02:43 by yuyu              #+#    #+#             */
-/*   Updated: 2024/12/21 20:16:38 by yojin            ###   ########.fr       */
+/*   Updated: 2024/12/21 20:43:43 by yojin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,6 @@
 # define EXECUTE_H
 
 # include "cub3d.h"
-
-// win size
-# define WIN_X 800
-# define WIN_Y 600
 
 // x11 event
 # define X_EVNET_KEY_PRESS 2
