@@ -6,7 +6,7 @@
 /*   By: yojin <yojin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 21:03:50 by yojin             #+#    #+#             */
-/*   Updated: 2024/12/21 16:43:56 by yojin            ###   ########.fr       */
+/*   Updated: 2024/12/21 23:00:09 by yojin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,9 @@ void	check_xpm_file(char *path)
 	char	len;
 	int		fd;
 
-	printf("xpm check path:%s\n", path);
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 	{
-		printf("cannot open file\n");
 		perror("cub3d");
 		exit(EXIT_FAILURE);
 	}

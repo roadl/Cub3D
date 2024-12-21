@@ -6,17 +6,13 @@
 /*   By: yojin <yojin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 21:09:47 by yojin             #+#    #+#             */
-/*   Updated: 2024/12/21 22:03:57 by yojin            ###   ########.fr       */
+/*   Updated: 2024/12/21 23:02:22 by yojin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "parse.h"
 #include "execute.h"
-
-#define WIN_WIDTH	1080
-#define WIN_HEIGHT	720
-#define	SEG			1
 
 void	mlx_start(t_mlx *mlx)
 {

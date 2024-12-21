@@ -6,7 +6,7 @@
 /*   By: yojin <yojin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 16:21:59 by yuyu              #+#    #+#             */
-/*   Updated: 2024/12/21 22:04:40 by yojin            ###   ########.fr       */
+/*   Updated: 2024/12/21 23:00:55 by yojin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,6 @@ void	ray_casting(t_mlx *mlx)
 	while (++x < WIN_X)
 	{
 		ray_setting(mlx, x);
-		printf("person_x: %lf, person_y: %lf, dx: %lf, dy: %lf, delta_x: %lf, delta_y: %lf, x_dist: %lf, y_dist : %lf, x_pos: %d, y_pos: %d, x_step:%d, y_step:%d\n", mlx->info.person.x_pos, mlx->info.person.y_pos, mlx->ray.dx, mlx->ray.dy, mlx->ray.delta_x, mlx->ray.delta_y, mlx->ray.x_dist, mlx->ray.y_dist, mlx->ray.x_pos, mlx->ray.y_pos, mlx->ray.x_step, mlx->ray.y_step);
 		dda_algorithm(mlx);
 		cal_hit_parameter(mlx);
 		texture_mapping(mlx, x);
