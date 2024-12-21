@@ -6,7 +6,7 @@
 /*   By: yuyu <yuyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 14:07:45 by yuyu              #+#    #+#             */
-/*   Updated: 2024/12/20 22:50:58 by yuyu             ###   ########.fr       */
+/*   Updated: 2024/12/21 16:21:44 by yuyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,52 +49,6 @@ void	person_move(t_mlx *mlx)
 
 	// 나중에 지우기
 	// test_print(mlx);
-}
-
-void	ray_setting(t_mlx *mlx, int x) // 미완
-{
-	double	temp;
-	double	angle;
-
-	mlx->ray.x_pos = mlx->info.person.x_pos;
-	mlx->ray.y_pos = mlx->info.person.y_pos;
-	angle = FOV - x * DIV_ANGLE; // 메이비 왼쪽부터?
-	temp = mlx->info.person.x_dir * cos(angle) - mlx->info.person.y_dir * sin(angle);
-	mlx->ray.dy = mlx->info.person.x_dir
-		* sin(angle) + mlx->info.person.y_dir * cos(angle);
-	mlx->ray.dx = temp;
-	if (mlx->ray.dx > mlx->ray.dy)
-	{
-		mlx->ray.dy /= mlx->ray.dx;
-		mlx->ray.dx = 1;
-	}
-	else
-	{
-		mlx->ray.dx /= mlx->ray.dy;
-		mlx->ray.dy = 1;
-	}
-}
-
-void	ray_casting(t_mlx *mlx)
-{
-	int x;
-
-	x = -1;
-	while (++x < WIN_X)
-	{
-		ray_setting(mlx, x);
-		dda_algorithm(mlx);
-		texture_mapping(mlx); // 미완
-	}
-}
-
-void	render_sceen(t_mlx *mlx) // 미완
-{
-	ray_casting(mlx);
-	// draw_sceen(mlx);
-	// void *arg = mlx;
-	// arg = NULL;
-	// return ;
 }
 
 int	loop_main(t_mlx *mlx)
