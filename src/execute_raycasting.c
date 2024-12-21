@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_raycasting.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yojin <yojin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: yuyu <yuyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 16:21:59 by yuyu              #+#    #+#             */
-/*   Updated: 2024/12/21 21:05:47 by yojin            ###   ########.fr       */
+/*   Updated: 2024/12/21 21:21:11 by yuyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,25 +18,25 @@ static void	cal_sidedist(t_mlx *mlx) // 이거 소수점 오차도 나중에 생
 	if (mlx->ray.dx < 0)
 	{
 		mlx->ray.x_step = -1;
-		mlx->ray.x_dist += (mlx->info.person.x_pos - mlx->ray.x_pos)
+		mlx->ray.x_dist = (mlx->info.person.x_pos - mlx->ray.x_pos)
 			* mlx->ray.delta_x;
 	}
 	else
 	{
 		mlx->ray.x_step = 1;
-		mlx->ray.x_dist += (mlx->ray.x_pos + 1 - mlx->info.person.x_pos)
+		mlx->ray.x_dist = (mlx->ray.x_pos + 1 - mlx->info.person.x_pos)
 			* mlx->ray.delta_x;
 	}
 	if (mlx->ray.dy < 0)
 	{
 		mlx->ray.y_step = -1;
-		mlx->ray.y_dist += (mlx->info.person.y_pos - mlx->ray.y_pos)
+		mlx->ray.y_dist = (mlx->info.person.y_pos - mlx->ray.y_pos)
 			* mlx->ray.delta_y;
 	}
 	else
 	{
 		mlx->ray.y_step = 1;
-		mlx->ray.y_dist += (mlx->ray.y_pos + 1 - mlx->info.person.y_pos)
+		mlx->ray.y_dist = (mlx->ray.y_pos + 1 - mlx->info.person.y_pos)
 			* mlx->ray.delta_y;
 	}
 }
@@ -96,9 +96,10 @@ void	ray_casting(t_mlx *mlx)
 	while (++x < WIN_X)
 	{
 		ray_setting(mlx, x);
+		printf("person_x: %lf, person_y: %lf, dx: %lf, dy: %lf, delta_x: %lf, delta_y: %lf, x_dist: %lf, y_dist : %lf, x_pos: %d, y_pos: %d, x_step:%d, y_step:%d\n", mlx->info.person.x_pos, mlx->info.person.y_pos, mlx->ray.dx, mlx->ray.dy, mlx->ray.delta_x, mlx->ray.delta_y, mlx->ray.x_dist, mlx->ray.y_dist, mlx->ray.x_pos, mlx->ray.y_pos, mlx->ray.x_step, mlx->ray.y_step);
 		dda_algorithm(mlx);
 		cal_hit_parameter(mlx);
-		printf("hit.x_pos: %f, hit.dir: %d, distance: %f\n", mlx->hit.x_pos, mlx->hit.hit_dir, mlx->hit.distance);
+		// printf("hit.x_pos: %lf, hit.dir: %d, distance: %lf\n", mlx->hit.x_pos, mlx->hit.hit_dir, mlx->hit.distance);
 		texture_mapping(mlx, x); // 미완
 	}
 }

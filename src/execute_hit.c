@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_hit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yojin <yojin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: yuyu <yuyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 20:11:55 by yuyu              #+#    #+#             */
-/*   Updated: 2024/12/21 21:02:22 by yojin            ###   ########.fr       */
+/*   Updated: 2024/12/21 21:26:59 by yuyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	cal_hit_parameter(t_mlx *mlx)
 		mlx->hit.x_pos = mlx->info.person.y_pos
 			+ mlx->ray.dy * mlx->hit.distance - mlx->ray.y_pos;
 	}
-	if (mlx->hit.hit_dir == -3)
+	else if (mlx->hit.hit_dir == -3)
 	{
 		mlx->hit.distance = mlx->ray.y_dist - mlx->ray.delta_y;
 		mlx->hit.x_pos = mlx->info.person.x_pos
