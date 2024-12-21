@@ -6,7 +6,7 @@
 /*   By: yuyu <yuyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 22:29:36 by yojin             #+#    #+#             */
-/*   Updated: 2024/12/22 00:34:31 by yuyu             ###   ########.fr       */
+/*   Updated: 2024/12/22 01:07:58 by yuyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	texture_mapping(t_mlx *mlx, int window_x)
 	y = -1;
 	t = mlx->info.textures[mlx->hit.hit_dir];
 	cal_texture_info(mlx, &y_ratio, &delta_y);
+	mlx->hit.x_pos = 1 - mlx->hit.x_pos;
 	while (++y < WIN_Y)
 	{
 		y_ratio += delta_y;

@@ -8,7 +8,7 @@ INC_DIR = ./include
 SRC_DIR = ./src
 MLX_DIR = ./mlx
 MLX = libmlx.a
-HEADER = $(INC_DIR)/cub3d.h $(INC_DIR)/parse.h
+HEADER = $(INC_DIR)/cub3d.h $(INC_DIR)/execute.h  $(INC_DIR)/parse.h
 SRCS =	src/cub3d.c src/parse.c src/util.c src/util2.c src/check.c \
 		src/map.c src/map_util.c src/debug.c src/texture.c \
 		src/execute_error.c src/execute_hook.c src/execute_move.c \
@@ -27,7 +27,7 @@ $(NAME): $(OBJS)
 re: fclean all
 
 clean:
-	make -C $(LIBFT_DIR) clean
+	make -C $(LIBFT_DIR) fclean
 	rm -f $(OBJS)
 
 fclean: clean
