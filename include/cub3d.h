@@ -10,7 +10,6 @@
 // # include <errno.h> // 이거 errno써도 되려나.. MiniLibX에서 잘 처리 안한다고 함.
 # include <mlx.h>
 # include <math.h>
-# include "libft.h"
 
 # include "../libft/libft.h"
 # include "mlx.h"
@@ -27,24 +26,6 @@ typedef struct s_texture
 	int		width;
 	int		height;
 }	t_texture;
-
-typedef struct s_color
-{
-	int	r;
-	int	g;
-	int	b;
-}	t_color;
-
-typedef struct s_info
-{
-	char		*cub_path;
-	char		**map;
-	int			map_width;
-	int			map_height;
-	t_color		floor_color;
-	t_color		celling_color;
-	t_texture	textures[4];
-}	t_info;
 
 typedef struct s_person
 {
@@ -65,6 +46,18 @@ typedef struct s_info
 	t_color		celling_color;
 	t_texture	textures[4];
 	t_person	person;
+}	t_info;
+
+typedef struct s_info
+{
+	char		*cub_path;
+	char		**map;
+	int			map_width;
+	int			map_height;
+	int			floor_color;
+	int			celling_color;
+	t_person	person;
+	t_texture	textures[4];
 }	t_info;
 
 typedef struct s_data

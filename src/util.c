@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   util.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yojin <yojin@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/20 21:03:40 by yojin             #+#    #+#             */
+/*   Updated: 2024/12/20 21:03:43 by yojin            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "parse.h"
 
 int	is_empty(char *line)
@@ -17,7 +29,7 @@ char	*free_and_gnl(char *line, int fd)
 	return (get_next_line(fd));
 }
 
-void	fail_exit()
+void	fail_exit(void)
 {
 	perror("cub3d");
 	exit(EXIT_FAILURE);
