@@ -6,7 +6,7 @@
 /*   By: yuyu <yuyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 14:02:43 by yuyu              #+#    #+#             */
-/*   Updated: 2024/12/20 20:39:44 by yuyu             ###   ########.fr       */
+/*   Updated: 2024/12/21 17:57:51 by yuyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,15 @@
 
 // map 충돌 방지
 # define SAFE_DISTANCE 0.05
-
-# define MOVE_SPEED 0.05 // 일단 0.01 ~ 0.1 생각해야할듯
-# define TURN_SPEED 1
+# define ALMOSTZERO 1.0e-9
 
 # define PI 3.14159265359
+# define FOV (PI / 60)
+# define DIV_ANGLE (FOV / WIN_X)
+
+# define MOVE_SPEED 0.05 // 일단 0.01 ~ 0.1 생각해야할듯
+# define TURN_SPEED (PI / 180) // 1도 씩 움직임.
+
 
 typedef enum e_key_flag
 {
@@ -52,7 +56,7 @@ typedef enum e_key_flag
 }	t_key_flag;
 
 //==================== execute_error.c ====================
-void	program_end(t_mlx *mlx);
+int		program_end(t_mlx *mlx);
 void	error_occur(t_mlx *mlx, char *custom_msg, int e_code);
 
 //==================== execute_hook.c ====================
