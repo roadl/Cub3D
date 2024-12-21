@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_hit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yojin <yojin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: yuyu <yuyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 20:11:55 by yuyu              #+#    #+#             */
-/*   Updated: 2024/12/21 22:05:24 by yojin            ###   ########.fr       */
+/*   Updated: 2024/12/21 23:02:35 by yuyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,16 @@ void	cal_hit_parameter(t_mlx *mlx)
 	if (mlx->hit.hit_dir == -2)
 	{
 		mlx->hit.distance = mlx->ray.x_dist - mlx->ray.delta_x;
+		// mlx->hit.distance = (mlx->ray.x_pos - mlx->info.person.x_pos + (1 - mlx->ray.x_step) / 2) / mlx->ray.dx;
 		mlx->hit.x_pos = mlx->info.person.y_pos
-			+ mlx->ray.dy * mlx->hit.distance - mlx->ray.y_pos;
+			+ mlx->ray.dy * (mlx->ray.x_dist - mlx->ray.delta_x) - mlx->ray.y_pos;
 	}
 	else if (mlx->hit.hit_dir == -3)
 	{
 		mlx->hit.distance = mlx->ray.y_dist - mlx->ray.delta_y;
+		// mlx->hit.distance = (mlx->ray.y_pos - mlx->info.person.y_pos + (1 - mlx->ray.y_step) / 2) / mlx->ray.dy;
 		mlx->hit.x_pos = mlx->info.person.x_pos
-			+ mlx->ray.dx * mlx->hit.distance - mlx->ray.x_pos;
+			+ mlx->ray.dx * (mlx->ray.y_dist - mlx->ray.delta_y) - mlx->ray.x_pos;
 	}
 	else
 		error_occur(mlx, "hit error", 1);
