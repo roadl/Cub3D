@@ -35,12 +35,14 @@ int		cal_width(char *line);
 void	copy_line(char *map_row, char *line, int width);
 
 //texture.c
+void	print_texture_line(t_mlx *mlx, double x_ratio, int distance, int wall, int window_x);
 void	init_textures(t_mlx *mlx);
 
 //debug.c
 void	print_map(t_info *info);
 void	print_info(t_info *info);
 void	print_player(t_person p);
+void	print_texture_window(t_mlx *mlx);
 void	leaks(void);
 
 #endif
