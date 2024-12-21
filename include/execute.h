@@ -6,7 +6,7 @@
 /*   By: yuyu <yuyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 14:02:43 by yuyu              #+#    #+#             */
-/*   Updated: 2024/12/21 23:59:38 by yuyu             ###   ########.fr       */
+/*   Updated: 2024/12/22 00:47:53 by yuyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define KEY_A 0
 # define KEY_S 1
 # define KEY_D 2
-# define KEY_EXIT 53 // exit key
+# define KEY_EXIT 53
 # define KEY_LEFT 123
 # define KEY_RIGHT 124
 
@@ -34,12 +34,9 @@
 # define ALMOSTZERO 1.0e-10
 
 # define PI 3.14159265359
-# define FOV (PI / 3)
-# define DIV_ANGLE (FOV / WIN_X)
 
-# define MOVE_SPEED 0.05 // 일단 0.01 ~ 0.1 생각해야할듯
-# define TURN_SPEED (PI / 180) // 1도 씩 움직임.
-
+# define MOVE_SPEED 0.05
+# define TURN_SPEED 0.01745329252
 
 typedef enum e_key_flag
 {
@@ -75,6 +72,8 @@ void	ft_turn(t_mlx *mlx, char ch);
 void	render_sceen(t_mlx *mlx);
 void	ray_casting(t_mlx *mlx);
 
+//==================== execute_utils.c ====================
 void	rotate_vector(double *dx, double *dy, double angle);
+int		check_vaild_pos(t_mlx *mlx, double dx, double dy);
 
 #endif

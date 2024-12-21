@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yuyu <yuyu@student.42seoul.kr>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/22 00:40:31 by yuyu              #+#    #+#             */
+/*   Updated: 2024/12/22 00:40:33 by yuyu             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PARSE_H
 # define PARSE_H
 
@@ -37,7 +49,6 @@ int		cal_width(char *line);
 void	copy_line(char *map_row, char *line, int width);
 
 //texture.c
-//void	print_texture_line(t_mlx *mlx, double x_ratio, int distance, int wall, int window_x);
 void	texture_mapping(t_mlx *mlx, int window_x);
 void	init_textures(t_mlx *mlx);
 

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yuyu <yuyu@student.42seoul.kr>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/22 00:39:12 by yuyu              #+#    #+#             */
+/*   Updated: 2024/12/22 00:46:31 by yuyu             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUB3D_H
 # define CUB3D_H
 
@@ -33,12 +45,13 @@ typedef struct s_texture
 
 typedef struct s_person
 {
-	double	x_pos; // SAFE_DISTANCE ~ (map_width - SAFE_DISTANCE)
-	double	y_pos; // SAFE_DISTANCE ~ (map_height - SAFE_DISTANCE)
-	double	x_dir; // normal vector
-	double	y_dir; // normal vectors
-	double	x_camera; // fov
+	double	x_pos;
+	double	y_pos;
+	double	x_dir;
+	double	y_dir;
+	double	x_camera;
 	double	y_camera;
+	double	fov;
 }	t_person;
 
 typedef struct s_info
@@ -64,23 +77,23 @@ typedef struct s_data
 
 typedef struct s_ray
 {
-	double	dx; // ray 방향
+	double	dx;
 	double	dy;
-	double	delta_x; // x하나 증가시키기 위해 가야하는 거리의 비율
-	double	delta_y; // y하나 증가시키기 위해 가야하는 거리의 비율
-	double	x_dist; // 거리
+	double	delta_x;
+	double	delta_y;
+	double	x_dist;
 	double	y_dist;
-	int		x_pos; // map상 위치
+	int		x_pos;
 	int		y_pos;
-	int		x_step; // x_map 이동 방향.
-	int		y_step; // y_map 이동 방향.
+	int		x_step;
+	int		y_step;
 }t_ray;
 
 typedef struct s_hit
 {
-	int		hit_dir; // 북남서동 => 0,1,2,3
+	int		hit_dir;
 	double	distance;
-	double	x_pos; // texture coordinate
+	double	x_pos;
 }	t_hit;
 
 typedef struct s_mlx
@@ -88,11 +101,10 @@ typedef struct s_mlx
 	void		*mlx_ptr;
 	void		*win_ptr;
 	t_data		img;
-	t_info		info; // 혹은 t_info *info;
+	t_info		info;
 	t_ray		ray;
 	t_hit		hit;
-	int			key_state; // t_key_flag에서 shift 연산
-	int test; // 나중에 지우기
+	int			key_state;
 }	t_mlx;
 
 void	cub3d_parse(t_info *info, char *path);

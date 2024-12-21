@@ -6,7 +6,7 @@
 /*   By: yuyu <yuyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 22:29:36 by yojin             #+#    #+#             */
-/*   Updated: 2024/12/22 00:23:50 by yuyu             ###   ########.fr       */
+/*   Updated: 2024/12/22 00:34:31 by yuyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,6 @@ void	texture_mapping(t_mlx *mlx, int window_x)
 	y = -1;
 	t = mlx->info.textures[mlx->hit.hit_dir];
 	cal_texture_info(mlx, &y_ratio, &delta_y);
-	//printf("hit.x_pos: %f, hit.dir: %d, distance: %f\n", mlx->hit.x_pos, mlx->hit.hit_dir, mlx->hit.distance);
-	// printf("texture width: %d, height: %d\n", (int)(t.height), (int)(t.width));
-	// printf("y_ratio: %f, delta_y: %f\n", y_ratio, delta_y);
 	while (++y < WIN_Y)
 	{
 		y_ratio += delta_y;
@@ -36,9 +33,6 @@ void	texture_mapping(t_mlx *mlx, int window_x)
 		else
 			color = t.texture[(int)(t.height * y_ratio)] \
 				[(int)(t.width * mlx->hit.x_pos)];
-		// printf("y_ratio: %f, delta_y: %f\n", y_ratio, delta_y);
-		// printf("texture[%d][%d]\n", (int)(t.height * y_ratio), (int)(t.width * mlx->hit.x_pos));
-		// printf("color: %#X\n", color);
 		my_mlx_pixel_put(&mlx->img, window_x, y, color);
 	}
 }
@@ -76,7 +70,6 @@ static void	copy_color(t_texture *t, char *img_data, int line_length, int bpp)
 	}
 }
 
-// XPM 파일 색상 정보를 2차원 배열로 변환
 static void	convert_xpm_to_array(t_mlx *mlx, t_texture *t)
 {
 	int		bpp;

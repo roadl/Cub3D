@@ -6,7 +6,7 @@
 /*   By: yuyu <yuyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 21:05:07 by yojin             #+#    #+#             */
-/*   Updated: 2024/12/22 00:27:08 by yuyu             ###   ########.fr       */
+/*   Updated: 2024/12/22 00:34:07 by yuyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	cal_texture_info(t_mlx *mlx, double *y_ratio, double *delta_y)
 {
 	double	wall_height;
 
-	wall_height = (double)WIN_Y /mlx->hit.distance;
+	wall_height = (double)WIN_Y / mlx->hit.distance;
 	*y_ratio = -(WIN_Y - wall_height) / 2 / wall_height;
 	*delta_y = 1 / wall_height;
 }

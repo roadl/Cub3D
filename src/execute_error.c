@@ -6,22 +6,21 @@
 /*   By: yuyu <yuyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:16:41 by yuyu              #+#    #+#             */
-/*   Updated: 2024/12/21 20:23:32 by yuyu             ###   ########.fr       */
+/*   Updated: 2024/12/22 00:52:56 by yuyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execute.h"
-// 정상종료
+
 int	program_end(t_mlx *mlx)
 {
 	if (mlx->img.img_ptr)
 		mlx_destroy_image(mlx->mlx_ptr, mlx->img.img_ptr);
 	if (mlx->win_ptr)
 		mlx_destroy_window(mlx->mlx_ptr, mlx->win_ptr);
-	exit(0);
+	exit(EXIT_SUCCESS);
 }
 
-// 문제 발생
 void	error_occur(t_mlx *mlx, char *custom_msg, int e_code)
 {
 	const char	*error_msg = strerror(errno);

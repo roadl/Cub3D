@@ -12,7 +12,7 @@ HEADER = $(INC_DIR)/cub3d.h $(INC_DIR)/parse.h
 SRCS =	src/cub3d.c src/parse.c src/util.c src/util2.c src/check.c \
 		src/map.c src/map_util.c src/debug.c src/texture.c \
 		src/execute_error.c src/execute_hook.c src/execute_move.c \
-		src/execute_raycasting.c src/execute_hit.c
+		src/execute_raycasting.c src/execute_hit.c src/execute_utils.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)

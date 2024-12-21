@@ -6,14 +6,14 @@
 /*   By: yuyu <yuyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 16:21:59 by yuyu              #+#    #+#             */
-/*   Updated: 2024/12/22 00:26:53 by yuyu             ###   ########.fr       */
+/*   Updated: 2024/12/22 00:34:45 by yuyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execute.h"
 #include "parse.h"
 
-static void	cal_sidedist(t_mlx *mlx) // 이거 소수점 오차도 나중에 생각해서 고쳐야함. map으로 해결한듯.
+static void	cal_sidedist(t_mlx *mlx)
 {
 	if (mlx->ray.dx < 0)
 	{
@@ -44,17 +44,12 @@ static void	cal_sidedist(t_mlx *mlx) // 이거 소수점 오차도 나중에 생
 static void	ray_setting(t_mlx *mlx, int x)
 {
 	double	angle;
-	// 현재 위치
+
 	mlx->ray.x_pos = (int)(mlx->info.person.x_pos);
 	mlx->ray.y_pos = (int)(mlx->info.person.y_pos);
 	angle = 1 - (double)x * 2 / WIN_X;
 	mlx->ray.dx = mlx->info.person.x_dir + mlx->info.person.x_camera * angle;
 	mlx->ray.dy = mlx->info.person.y_dir + mlx->info.person.y_camera * angle;
-	// angle = FOV / 2 - DIV_ANGLE * x; // 메이비 왼쪽부터?
-	// mlx->ray.dx = mlx->info.person.x_dir
-	// 	* cos(angle) - mlx->info.person.y_dir * sin(angle);
-	// mlx->ray.dy = mlx->info.person.x_dir
-	// 	* sin(angle) + mlx->info.person.y_dir * cos(angle);
 	if (fabs(mlx->ray.dx) < ALMOSTZERO)
 		mlx->ray.delta_x = 1 / ALMOSTZERO;
 	else
