@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_main.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yuyu <yuyu@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: yojin <yojin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 14:07:45 by yuyu              #+#    #+#             */
-/*   Updated: 2024/12/21 16:21:44 by yuyu             ###   ########.fr       */
+/*   Updated: 2024/12/21 20:11:10 by yojin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	mlx_start(t_mlx *mlx)
 			&mlx->img.bits_per_pixel, &mlx->img.line_length, &mlx->img.endian);
 	if (!mlx->img.addr)
 		error_occur(mlx, "mlx_get_data_addr error", 1);
-	// 나머지 초기화 작업.
 }
 
 void	person_move(t_mlx *mlx)
@@ -46,9 +45,6 @@ void	person_move(t_mlx *mlx)
 		ft_turn(mlx, 'L');
 	if (mlx->key_state & RIGHT_STATE && !(mlx->key_state & LEFT_STATE))
 		ft_turn(mlx, 'R');
-
-	// 나중에 지우기
-	// test_print(mlx);
 }
 
 int	loop_main(t_mlx *mlx)

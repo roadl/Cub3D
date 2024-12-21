@@ -7,7 +7,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <stdbool.h>
-// # include <errno.h> // 이거 errno써도 되려나.. MiniLibX에서 잘 처리 안한다고 함.
+# include <errno.h> // 이거 errno써도 되려나.. MiniLibX에서 잘 처리 안한다고 함.
 # include <mlx.h>
 # include <math.h>
 
@@ -33,20 +33,7 @@ typedef struct s_person
 	double	y_pos; // SAFE_DISTANCE ~ (map_height - SAFE_DISTANCE)
 	double	x_dir; // normal vector
 	double	y_dir; // normal vectors
-} t_person;
-
-typedef struct s_info
-{
-	char		*cub_path;
-	// char		**map;
-	char		map[40][40]; // test
-	int			map_width;
-	int			map_height;
-	t_color		floor_color;
-	t_color		celling_color;
-	t_texture	textures[4];
-	t_person	person;
-}	t_info;
+}	t_person;
 
 typedef struct s_info
 {
@@ -85,9 +72,9 @@ typedef struct s_ray
 
 typedef struct s_hit
 {
-	int	hit_dir; // w,a,s,d => 0,1,2,3
-	int	distance;
-	int	x_pos; // texture coordinate
+	int		hit_dir; // w,a,s,d => 0,1,2,3
+	double	distance;
+	double	x_pos; // texture coordinate
 }	t_hit;
 
 typedef struct s_mlx

@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   execute.raycasting.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yuyu <yuyu@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: yojin <yojin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 16:21:59 by yuyu              #+#    #+#             */
-/*   Updated: 2024/12/21 19:51:00 by yuyu             ###   ########.fr       */
+/*   Updated: 2024/12/21 20:31:13 by yojin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execute.h"
+#include "parse.h"
 
 void	cal_sidedist(t_mlx *mlx) // 이거 소수점 오차도 나중에 생각해서 고쳐야함. map으로 해결한듯.
 {
@@ -42,7 +43,6 @@ void	cal_sidedist(t_mlx *mlx) // 이거 소수점 오차도 나중에 생각해�
 
 void	ray_setting(t_mlx *mlx, int x) // 미완
 {
-	double	temp;
 	double	angle;
 	// 현재 위치
 	mlx->ray.x_pos = (int)(mlx->info.person.x_pos);
@@ -94,17 +94,17 @@ void	cal_hit_pos(t_mlx *mlx)
 	if (mlx->ray.dx > 0 && mlx->hit.hit_dir == -2)
 		mlx->hit.x_pos = 1 - mlx->hit.x_pos;
 
-	printf("texture coordinate: %lf", mlx->hit.x_pos);
+	printf("texture coordinate: %f", mlx->hit.x_pos);
 	if (mlx->hit.x_pos < 0)
 		mlx->hit.x_pos = 0;
 	else if (mlx->hit.x_pos > 1)
 		mlx->hit.x_pos = 1;
 }
 
-void	cal_hit_dir(t_mlx *mlx)
-{
-
-}
+// void	cal_hit_dir(t_mlx *mlx)
+// {
+	
+// }
 
 void	cal_hit_parameter(t_mlx *mlx)
 {
@@ -121,7 +121,7 @@ void	cal_hit_parameter(t_mlx *mlx)
 	else
 		error_occur(mlx, "hit error", 1);
 	cal_hit_pos(mlx);
-	cal_hit_dir(mlx);
+	// cal_hit_dir(mlx);
 }
 
 void	ray_casting(t_mlx *mlx)
@@ -141,5 +141,5 @@ void	ray_casting(t_mlx *mlx)
 void	render_sceen(t_mlx *mlx) // 미완
 {
 	ray_casting(mlx);
-	draw_sceen(mlx);
+	//draw_sceen(mlx);
 }

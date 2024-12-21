@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yuyu <yuyu@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: yojin <yojin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 14:02:43 by yuyu              #+#    #+#             */
-/*   Updated: 2024/12/21 17:57:51 by yuyu             ###   ########.fr       */
+/*   Updated: 2024/12/21 20:16:38 by yojin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,8 @@ void	ft_move_a(t_mlx *mlx);
 void	ft_move_s(t_mlx *mlx);
 void	ft_move_d(t_mlx *mlx);
 void	ft_turn(t_mlx *mlx, char ch);
+
+//==================== execute_raycasting.c ====================
+void	render_sceen(t_mlx *mlx);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: yojin <yojin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 22:29:36 by yojin             #+#    #+#             */
-/*   Updated: 2024/12/21 20:02:24 by yojin            ###   ########.fr       */
+/*   Updated: 2024/12/21 20:30:45 by yojin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,17 @@
 #define OFFSET		1
 #define	MAX			340
 
-void	print_texture_line(t_mlx *mlx, double x_ratio, int distance, int wall, int window_x)
+void	texture_mapping(t_mlx *mlx, int window_x)
 {
 	t_texture	t;
-	int			y;
-	double		wall_height;
-	double		y_ratio;
-	int			color;
 	double		delta_y;
+	double		y_ratio;
+	int			y;
+	int			color;
 
 	y = -1;
-	t = mlx->info.textures[wall];
-	wall_height = (double)WIN_HEIGHT * 2 / (distance + 1);
-	y_ratio = -(WIN_HEIGHT - wall_height) / 2 / wall_height;
-	delta_y = 1 / wall_height;
+	t = mlx->info.textures[mlx->hit.hit_dir];
+	cal_texture_info(mlx, &y_ratio, &delta_y);
 	while (++y < WIN_HEIGHT)
 	{
 		y_ratio += delta_y;
@@ -38,7 +35,8 @@ void	print_texture_line(t_mlx *mlx, double x_ratio, int distance, int wall, int 
 		else if (y_ratio >= 1)
 			color = mlx->info.floor_color;
 		else
-			color = t.texture[(int)(t.height * y_ratio)][(int)(t.width * x_ratio)];
+			color = t.texture[(int)(t.height * y_ratio)] \
+				[(int)(t.width * mlx->hit.x_pos)];
 		mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, window_x, y, color);
 	}
 }
@@ -50,15 +48,16 @@ void	print_texture_line(t_mlx *mlx, double x_ratio, int distance, int wall, int 
 // 	double		wall_height;
 // 	double		y_ratio;
 // 	int			color;
+// 	double		delta_y;
 
 // 	y = -1;
 // 	t = mlx->info.textures[wall];
 // 	wall_height = (double)WIN_HEIGHT * 2 / (distance + 1);
-// 	printf("wall_height: %f\n", wall_height);
+// 	y_ratio = -(WIN_HEIGHT - wall_height) / 2 / wall_height;
+// 	delta_y = 1 / wall_height;
 // 	while (++y < WIN_HEIGHT)
 // 	{
-// 		y_ratio = (y - (WIN_HEIGHT - wall_height) / 2) / wall_height;
-// 		printf("x_ratio: %f, y_ratio: %f\n", x_ratio, y_ratio);
+// 		y_ratio += delta_y;
 // 		if (y_ratio < 0)
 // 			color = mlx->info.celling_color;
 // 		else if (y_ratio >= 1)

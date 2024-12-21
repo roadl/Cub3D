@@ -6,7 +6,7 @@
 /*   By: yojin <yojin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 21:09:54 by yojin             #+#    #+#             */
-/*   Updated: 2024/12/21 16:33:44 by yojin            ###   ########.fr       */
+/*   Updated: 2024/12/21 20:07:35 by yojin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,18 @@ void	check_map_valid(t_info *info)
 
 void	parse_map(t_info *info, char *path)
 {
+	int	y;
+	int	x;
+
 	get_map_info(info, path);
 	init_map(info, path);
 	check_map_valid(info);
+	y = -1;
+	while (++y < info->map_height)
+	{
+		x = -1;
+		while (++x < info->map_width)
+			if (info->map[y][x] == ' ')
+				info->map[y][x] = '1';
+	}
 }
