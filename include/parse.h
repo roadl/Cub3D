@@ -16,6 +16,7 @@ int		open_with_check(char *path, int opt);
 // util2.c
 void	init_info(t_info *info);
 void	cal_texture_info(t_mlx *mlx, double *y_ratio, double *delta_y);
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 //check.c
 void	check_cub_file(char *path);

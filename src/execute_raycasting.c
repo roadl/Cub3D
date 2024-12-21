@@ -6,7 +6,7 @@
 /*   By: yuyu <yuyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 16:21:59 by yuyu              #+#    #+#             */
-/*   Updated: 2024/12/21 22:04:52 by yuyu             ###   ########.fr       */
+/*   Updated: 2024/12/21 22:16:19 by yuyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,13 +99,12 @@ void	ray_casting(t_mlx *mlx)
 		// printf("person_x: %lf, person_y: %lf, dx: %lf, dy: %lf, delta_x: %lf, delta_y: %lf, x_dist: %lf, y_dist : %lf, x_pos: %d, y_pos: %d, x_step:%d, y_step:%d\n", mlx->info.person.x_pos, mlx->info.person.y_pos, mlx->ray.dx, mlx->ray.dy, mlx->ray.delta_x, mlx->ray.delta_y, mlx->ray.x_dist, mlx->ray.y_dist, mlx->ray.x_pos, mlx->ray.y_pos, mlx->ray.x_step, mlx->ray.y_step);
 		dda_algorithm(mlx);
 		cal_hit_parameter(mlx);
-		// printf("hit.x_pos: %f, hit.dir: %d, distance: %f\n", mlx->hit.x_pos, mlx->hit.hit_dir, mlx->hit.distance);
-		texture_mapping(mlx, x); // 미완
+		texture_mapping(mlx, x);
 	}
 }
 
 void	render_sceen(t_mlx *mlx)
 {
 	ray_casting(mlx);
-	// mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, mlx->img.img_ptr, 0, 0);
+	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, mlx->img.img_ptr, 0, 0);
 }

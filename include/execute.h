@@ -6,7 +6,7 @@
 /*   By: yuyu <yuyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 14:02:43 by yuyu              #+#    #+#             */
-/*   Updated: 2024/12/21 22:09:46 by yuyu             ###   ########.fr       */
+/*   Updated: 2024/12/21 22:15:29 by yuyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 # define ALMOSTZERO 1.0e-9
 
 # define PI 3.14159265359
-# define FOV (PI / 6)
+# define FOV (PI / 3)
 # define DIV_ANGLE (FOV / WIN_X)
 
 # define MOVE_SPEED 0.05 // 일단 0.01 ~ 0.1 생각해야할듯

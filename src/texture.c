@@ -6,7 +6,7 @@
 /*   By: yuyu <yuyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 22:29:36 by yojin             #+#    #+#             */
-/*   Updated: 2024/12/21 22:04:56 by yuyu             ###   ########.fr       */
+/*   Updated: 2024/12/21 22:16:32 by yuyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void	texture_mapping(t_mlx *mlx, int window_x)
 	int			color;
 
 	y = -1;
-	t = mlx->info.textures[NO];
+	t = mlx->info.textures[mlx->hit.hit_dir];
 	cal_texture_info(mlx, &y_ratio, &delta_y);
-	// printf("hit.x_pos: %f, hit.dir: %d, distance: %f\n", mlx->hit.x_pos, mlx->hit.hit_dir, mlx->hit.distance);
+	//printf("hit.x_pos: %f, hit.dir: %d, distance: %f\n", mlx->hit.x_pos, mlx->hit.hit_dir, mlx->hit.distance);
 	// printf("texture width: %d, height: %d\n", (int)(t.height), (int)(t.width));
 	// printf("y_ratio: %f, delta_y: %f\n", y_ratio, delta_y);
 	while (++y < WIN_Y)
@@ -39,36 +39,9 @@ void	texture_mapping(t_mlx *mlx, int window_x)
 		// printf("y_ratio: %f, delta_y: %f\n", y_ratio, delta_y);
 		// printf("texture[%d][%d]\n", (int)(t.height * y_ratio), (int)(t.width * mlx->hit.x_pos));
 		// printf("color: %#X\n", color);
-		mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, window_x, y, color);
+		my_mlx_pixel_put(&mlx->img, window_x, y, color);
 	}
 }
-
-// void	print_texture_line(t_mlx *mlx, double x_ratio, int distance, int wall, int window_x)
-// {
-// 	t_texture	t;
-// 	int			y;
-// 	double		wall_height;
-// 	double		y_ratio;
-// 	int			color;
-// 	double		delta_y;
-
-// 	y = -1;
-// 	t = mlx->info.textures[wall];
-// 	wall_height = (double)WIN_HEIGHT * 2 / (distance + 1);
-// 	y_ratio = -(WIN_HEIGHT - wall_height) / 2 / wall_height;
-// 	delta_y = 1 / wall_height;
-// 	while (++y < WIN_HEIGHT)
-// 	{
-// 		y_ratio += delta_y;
-// 		if (y_ratio < 0)
-// 			color = mlx->info.celling_color;
-// 		else if (y_ratio >= 1)
-// 			color = mlx->info.floor_color;
-// 		else
-// 			color = t.texture[(int)(t.height * y_ratio)][(int)(t.width * x_ratio)];
-// 		mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, window_x, y, color);
-// 	}
-// }
 
 static int	**allocate_2d_array(int rows, int cols)
 {

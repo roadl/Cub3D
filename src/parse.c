@@ -6,7 +6,7 @@
 /*   By: yojin <yojin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 21:04:33 by yojin             #+#    #+#             */
-/*   Updated: 2024/12/21 20:17:04 by yojin            ###   ########.fr       */
+/*   Updated: 2024/12/21 22:01:08 by yojin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,5 +114,4 @@ void	cub3d_parse(t_info *info, char *path)
 	parse_file(info, path);
 	check_info_valid(info);
 	check_map_valid(info);
-	print_info(info);
 }

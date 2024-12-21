@@ -6,7 +6,7 @@
 /*   By: yuyu <yuyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 14:07:45 by yuyu              #+#    #+#             */
-/*   Updated: 2024/12/21 22:07:06 by yuyu             ###   ########.fr       */
+/*   Updated: 2024/12/21 22:16:02 by yuyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,6 @@ void	person_move(t_mlx *mlx)
 		ft_turn(mlx, 'L');
 	if (mlx->key_state & RIGHT_STATE && !(mlx->key_state & LEFT_STATE))
 		ft_turn(mlx, 'R');
-	// 나중에 지우기
-	test_print(mlx);
 }
 
 int	loop_main(t_mlx *mlx)

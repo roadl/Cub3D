@@ -6,7 +6,7 @@
 /*   By: yuyu <yuyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 21:09:47 by yojin             #+#    #+#             */
-/*   Updated: 2024/12/21 22:08:10 by yuyu             ###   ########.fr       */
+/*   Updated: 2024/12/21 22:15:47 by yuyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ void	cub3d(t_mlx *mlx)
 {
 	mlx_start(mlx);
 	render_sceen(mlx);
-	printf("===========\n");
 	mlx_hook(mlx->win_ptr, X_EVNET_EXIT, 0, &program_end, mlx);
 	mlx_hook(mlx->win_ptr, X_EVNET_KEY_PRESS, 0, &key_press, mlx);
 	mlx_hook(mlx->win_ptr, X_EVNET_KEY_RELEASE, 0, &key_release, mlx);
