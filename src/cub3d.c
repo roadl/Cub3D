@@ -6,7 +6,7 @@
 /*   By: yojin <yojin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 21:09:47 by yojin             #+#    #+#             */
-/*   Updated: 2024/12/20 22:39:59 by yojin            ###   ########.fr       */
+/*   Updated: 2024/12/21 16:44:25 by yojin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int argc, char **argv)
 	t_mlx	mlx;
 	int		i;
 
-	// atexit(leaks);
+	//atexit(leaks);
 	if (argc != 2)
 	{
 		ft_putstr_fd("Error\n", STDERR_FILENO);

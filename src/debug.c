@@ -6,7 +6,7 @@
 /*   By: yojin <yojin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 21:03:56 by yojin             #+#    #+#             */
-/*   Updated: 2024/12/20 22:25:07 by yojin            ###   ########.fr       */
+/*   Updated: 2024/12/21 16:34:13 by yojin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ void	print_player(t_person p)
 
 void	print_info(t_info *info)
 {
+	print_map(info);
+	print_player(info->person);
+	printf("width: %d, height: %d\n", info->map_width, info->map_height);
 	printf("NO: %s\n", info->textures[NO].path);
 	printf("SO: %s\n", info->textures[SO].path);
 	printf("WE: %s\n", info->textures[WE].path);

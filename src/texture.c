@@ -6,7 +6,7 @@
 /*   By: yojin <yojin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 22:29:36 by yojin             #+#    #+#             */
-/*   Updated: 2024/12/20 22:38:55 by yojin            ###   ########.fr       */
+/*   Updated: 2024/12/21 16:44:14 by yojin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,9 @@ static void	convert_xpm_to_array(t_mlx *mlx, t_texture *t)
 	if (!img)
 		fail_exit();
 	img_data = mlx_get_data_addr(img, &bpp, &line_length, &endian);
-    t->texture = allocate_2d_array(t->height, t->width);
+	if (!img_data)
+		fail_exit();
+	t->texture = allocate_2d_array(t->height, t->width);
 	copy_color(t, img_data, line_length, bpp);
 	mlx_destroy_image(mlx->mlx_ptr, img);
 }
@@ -84,5 +86,5 @@ void	init_textures(t_mlx *mlx)
 	i = -1;
 	while (++i < 4)
 		convert_xpm_to_array(mlx, &mlx->info.textures[i]);
-	print_textures(mlx->info.textures);
+	//print_textures(mlx->info.textures);
 }

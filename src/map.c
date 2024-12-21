@@ -6,7 +6,7 @@
 /*   By: yojin <yojin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 21:09:54 by yojin             #+#    #+#             */
-/*   Updated: 2024/12/20 21:10:39 by yojin            ###   ########.fr       */
+/*   Updated: 2024/12/21 16:33:44 by yojin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,10 +98,8 @@ void	check_map_valid(t_info *info)
 		{
 			if (ft_isalpha(info->map[y][x]))
 				init_player(info, x, y);
-			// if (info->map[y][x] == '0' && \
-			// 	(info->map[y][x] != '1' || info->map[y][x] != '1' || \
-			// 	info->map[y][x] != '1' || info->map[y][x] != '1'))
-			// 	error_exit("Player is not inside a wall!!\n");
+			if (!is_valid_point(info, x, y))
+				error_exit("Invalid Map!!\n");
 		}	
 	}
 	if (info->person.x_pos < 0)
@@ -112,8 +110,5 @@ void	parse_map(t_info *info, char *path)
 {
 	get_map_info(info, path);
 	init_map(info, path);
-	printf("width: %d, height: %d\n", info->map_width, info->map_height);
 	check_map_valid(info);
-	print_map(info);
-	print_player(info->person);
 }
