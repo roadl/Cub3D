@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yuyu <yuyu@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: jin-yong-uk <jin-yong-uk@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 00:39:12 by yuyu              #+#    #+#             */
-/*   Updated: 2024/12/22 00:46:31 by yuyu             ###   ########.fr       */
+/*   Updated: 2026/02/09 13:45:38 by jin-yong-uk      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,10 @@
 # include <string.h>
 # include <stdbool.h>
 # include <errno.h>
-# include <mlx.h>
 # include <math.h>
 
 # include "../libft/libft.h"
-# include "mlx.h"
+# include "../minilibx/mlx.h"
 
 # define NO 0
 # define SO	1

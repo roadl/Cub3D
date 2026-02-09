@@ -1,14 +1,14 @@
 NAME = cub3D
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -I$(INC_DIR)
-MLXFLAGS = -lmlx -framework OpenGL -framework AppKit -lm
+MLXFLAGS = -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 LIBFT_DIR = ./libft
 LIBFT = libft.a
 INC_DIR = ./include
 SRC_DIR = ./src
-MLX_DIR = ./mlx
+MLX_DIR = ./minilibx
 MLX = libmlx.a
-HEADER = $(INC_DIR)/cub3d.h $(INC_DIR)/execute.h  $(INC_DIR)/parse.h
+HEADER = $(INC_DIR)/cub3d.h $(INC_DIR)/execute.h  $(INC_DIR)/parse.h $(MLX_DIR)/mlx.h
 SRCS =	src/cub3d.c src/parse.c src/util.c src/util2.c src/check.c \
 		src/map.c src/map_util.c src/debug.c src/texture.c \
 		src/execute_error.c src/execute_hook.c src/execute_move.c \
@@ -19,6 +19,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	make -C $(LIBFT_DIR) -j 8
+	make -C $(MLX_DIR)
 	$(CC) $(CFLAGS) $(MLXFLAGS) $(LIBFT_DIR)/$(LIBFT) $^ -o $(NAME)
 
 %.o: %.c $(HEADER)
@@ -27,11 +28,13 @@ $(NAME): $(OBJS)
 re: fclean all
 
 clean:
-	make -C $(LIBFT_DIR) fclean
+	make -C $(LIBFT_DIR) clean
+	make -C $(MLX_DIR) clean
 	rm -f $(OBJS)
 
 fclean: clean
 	make -C $(LIBFT_DIR) fclean
+	make -C $(MLX_DIR) clean
 	rm -f $(NAME)
 
 .PHONY: all re clean fclean

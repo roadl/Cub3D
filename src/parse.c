@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yojin <yojin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jin-yong-uk <jin-yong-uk@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 21:04:33 by yojin             #+#    #+#             */
-/*   Updated: 2024/12/21 22:01:08 by yojin            ###   ########.fr       */
+/*   Updated: 2026/02/09 13:45:51 by jin-yong-uk      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,13 +83,11 @@ static void	parse_file(t_info *info, char *path)
 {
 	char	*line;
 	int		fd;
-	int		count;
 
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 		fail_exit();
 	line = get_next_line(fd);
-	count = 0;
 	while (line)
 	{
 		if (is_line_map(line))
@@ -101,7 +99,6 @@ static void	parse_file(t_info *info, char *path)
 			process_line(info, line);
 		free(line);
 		line = get_next_line(fd);
-		count++;
 	}
 	free(line);
 	close(fd);
