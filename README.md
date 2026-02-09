@@ -3,6 +3,7 @@
 
 Ray Casting을 이용해 3D 1인칭 화면 구현 프로젝트입니다
 
+![cub3D Gameplay](image/map1.gif)
 
 ## Features
 - Ray Casting 기반 3D 1인칭 시점 렌더링
