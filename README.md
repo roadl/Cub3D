@@ -81,5 +81,5 @@ validmap1.cub 대신 원하는 .cub 파일을 사용할 수 있습니다.
 - Build Tool: make
 
 ## Team Members
-[roadl](github.com/roadl) 
-[yuyunjae](github.com/yuyunjae)
+[roadl](https://github.com/roadl) 
+[yuyunjae](https://github.com/yuyunjae)
